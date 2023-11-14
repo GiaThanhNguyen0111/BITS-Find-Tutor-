@@ -16,6 +16,7 @@ import java.util.Date;
 @Table(name = "qualification")
 public class Qualification {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "qualification_id")
     private Long qualificationID;
 

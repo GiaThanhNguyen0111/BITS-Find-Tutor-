@@ -32,6 +32,7 @@ import java.util.function.Function;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Component
+@RequiredArgsConstructor
 @Slf4j
 public class AppFilter extends OncePerRequestFilter {
 
@@ -46,15 +47,15 @@ public class AppFilter extends OncePerRequestFilter {
             @NonNull FilterChain filterChain) throws ServletException, IOException {
         final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
         final String jwtToken;
-        final String username;
+        final String userEmail;
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }
         jwtToken = authHeader.substring(7);
-        username = jwtAdapter.extractUsername(jwtToken);
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetail = this.userDetailsService.loadUserByUsername(username);
+        userEmail = jwtAdapter.extractUsername(jwtToken);
+        if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            UserDetails userDetail = this.userDetailsService.loadUserByUsername(userEmail);
             if (jwtAdapter.isTokenValid(jwtToken, userDetail)) {
                 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                         userDetail,
@@ -84,9 +85,6 @@ public class AppFilter extends OncePerRequestFilter {
             return extractClaim(jwtToken, Claims::getSubject);
         }
 
-        public String extraFamilyId(String jwtToken) {
-            return extractClaim(jwtToken, Claims::getId);
-        }
         public String generateToken(UserDetails userDetails, Long idFamily) {
             return generateToken(new HashMap<>(), userDetails, idFamily);
         }
@@ -112,10 +110,6 @@ public class AppFilter extends OncePerRequestFilter {
                     .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                     .compact();
         }
-
-
-
-        //TODO: add idFamily vao jwtToken khi childrenAccount register hoac login -> sua hoac them trong doInternalFilter
 
         //TODO: add generate refreshToken
         private Claims extractClaims(String jwtToken) {

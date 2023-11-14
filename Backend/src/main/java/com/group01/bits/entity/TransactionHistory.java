@@ -18,6 +18,7 @@ import java.util.Date;
 public class TransactionHistory {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "trans_id")
     private Long transID;
 
