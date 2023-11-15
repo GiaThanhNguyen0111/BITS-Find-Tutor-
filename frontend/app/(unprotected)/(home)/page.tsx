@@ -11,7 +11,7 @@ const HomePage = () => {
   return (
     <div className="home-container h-3/4 px-20 pb-20">
       {/* Hero Container */}
-      <div className="hero-container flex h-[600px] mb-5 ">
+      <div className="hero-container flex h-[600px] mb-24">
         <motion.div
           className="flex-1 flex flex-col items-center justify-center"
           initial={{ opacity: 0, x: 100 }}
@@ -20,8 +20,8 @@ const HomePage = () => {
           viewport={{ once: true }}
         >
           <p className="font-bold text-4xl">
-            Welcome to <span className=" text-emerald-500 uppercase">Logo</span>
-            ,
+            Welcome to{" "}
+            <span className=" text-emerald-500 uppercase">Tutoria</span>,
           </p>
           <p className="font-bold text-4xl text-center px-20">
             Discover the ultimate platform for online education search and
@@ -50,8 +50,10 @@ const HomePage = () => {
           <Lottie animationData={mainAnimation} />
         </motion.div>
       </div>
-
-      <div className="card-container w-full flex justify-around gap-10 mb-8">
+      <h2 className="text-center text-black text-2xl font-bold mb-10">
+        The best way for online education
+      </h2>
+      <div className="card-container w-full flex justify-around gap-10  mb-24">
         <motion.div
           className="w-1/4 shadow-md"
           initial={{ opacity: 0, x: -100 }}
@@ -140,22 +142,28 @@ const HomePage = () => {
       <motion.div
         initial={{ opacity: 0, x: 100 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 0.25 }}
+        transition={{ duration: 1, delay: 0.75 }}
         viewport={{ once: true }}
         className="why-container w-full flex px-20 mb-8"
       >
         <div className="flex-1 flex items-center justify-center">
           <Lottie animationData={main2Animation} />
         </div>
-        <div className="flex-1 flex items-center justify-center flex-col ">
-          <p className="font-bold text-3xl">What sets us apart?</p>
-          <p className="text-xl mt-2">
-            At <span className="text-emerald-500 uppercase font-semibold">Logo</span>, we are committed
-            to revolutionizing online education. Here&apos;s what sets us apart:
+        <div className="flex-1 flex justify-center  flex-col ">
+          <p className="font-bold text-3xl text-center">What sets us apart?</p>
+          <p className="text-xl mt-2 text-center">
+            At{" "}
+            <span className="text-emerald-500 uppercase font-semibold">
+              Tutoria
+            </span>
+            , we are committed to revolutionizing online education. Here&apos;s
+            what sets us apart:
           </p>
-          <p>
-            
-          </p>
+          <ul className="mt-2 text-xl flex flex-col items-center gap-2">
+            <li>Simple, straight foward process.</li>
+            <li>Detailed information about tutor.</li>
+            <li>Live session on the platform.</li>
+          </ul>
         </div>
       </motion.div>
     </div>
