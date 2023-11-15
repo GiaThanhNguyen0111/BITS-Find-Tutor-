@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-
+import Footer from "@/components/Footer";
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="h-full">
@@ -7,6 +7,7 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
         <Navbar />
       </div>
       <main className="min-h-full">{children}</main>
+      <Footer />
     </div>
   );
 };
