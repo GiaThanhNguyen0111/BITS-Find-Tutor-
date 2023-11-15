@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import javax.swing.text.html.Option;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -12,4 +14,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query(value = "SELECT u.* FROM user AS u WHERE u.email = ?1", nativeQuery = true)
     Optional<User> findByEmail(String email);
+
+    @Query(value = "SELECT u.* FROM user AS u WHERE u.role = \"TUTOR\" AND u.major = ?1", nativeQuery = true)
+    Optional<List<User>> findTutorByMajor(String major);
+
+    @Query(value = "SELECT u.* FROM user AS u WHERE u.role = \"TUTOR\" AND u.full_name = ?1", nativeQuery = true)
+    Optional<List<User>> findTutorByName(String fullName);
+
+
 }

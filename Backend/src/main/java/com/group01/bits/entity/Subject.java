@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @Builder
@@ -23,4 +25,7 @@ public class Subject {
 
     @Column(name = "description")
     private String description;
+
+    @ManyToMany(mappedBy = "subjects")
+    private List<User> users;
 }

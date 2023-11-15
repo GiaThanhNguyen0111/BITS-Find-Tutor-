@@ -42,9 +42,22 @@ public class User implements UserDetails {
     @Column(name = "role")
     private String role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Qualification> qualifications;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Schedule> schedules;
+
+    @ManyToMany(mappedBy = "user")
+    @JoinTable(
+            name = "tutor_subject",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "subject_id")
+    )
+
+
+
+    private List<Subject> subjects;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

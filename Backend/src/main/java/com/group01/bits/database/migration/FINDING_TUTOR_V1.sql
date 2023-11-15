@@ -67,3 +67,9 @@ create table user (
     PRIMARY KEY (user_id)
 );
 
+create table tutor_subject (
+    user_id BIGINT NOT NULL,
+    subject_id BIGINT NOT NULL,
+    PRIMARY KEY (user_id, subject_id)
+);
+

@@ -21,8 +21,9 @@ public class Schedule {
     @Column(name = "schedule_id")
     private Long scheduleID;
 
-    @Column(name = "user_id")
-    private Long userID;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Column(name = "start_time")
     private LocalDateTime startTime;
