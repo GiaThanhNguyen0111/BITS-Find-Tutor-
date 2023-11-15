@@ -19,6 +19,7 @@ import java.util.Date;
 public class Review {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
     private Long reviewID;
 
@@ -31,7 +32,7 @@ public class Review {
     @Column(name = "receiver_id")
     private Long receiverID;
 
-    @Column(name = "createAt")
+    @Column(name = "create_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createAt;
 
