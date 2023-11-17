@@ -20,7 +20,7 @@ const Navbar = () => {
   const { role } = useAuth();
   const { onOpen } = useModal();
   return (
-    <nav className="flex justify-between items-center max-w-3xl mx-auto py-5 h-[70px]">
+    <nav className="flex justify-between items-center max-w-4xl mx-auto py-5 h-[70px]">
       <div className="text-2xl font-bold uppercase">Tutoria</div>
       <NavigationMenu>
         <NavigationMenuList className="flex gap-16">

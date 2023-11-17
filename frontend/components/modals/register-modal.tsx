@@ -35,7 +35,7 @@ const formSchema = z.object({
 });
 
 export const RegisterModal = () => {
-  const { isOpen, onClose, type } = useModal();
+  const { isOpen, onClose, type, onOpen } = useModal();
   const isModalOpen = isOpen && type === "register";
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -54,6 +54,10 @@ export const RegisterModal = () => {
   const handleClose = () => {
     form.reset();
     onClose();
+  };
+  const handleChangeToLogin = () => {
+    onClose();
+    onOpen("login");
   };
 
   return (
@@ -143,7 +147,14 @@ export const RegisterModal = () => {
               />
             </div>
             <DialogFooter>
-              <Button>Register</Button>
+              <Button
+                className="w-24"
+                type="button"
+                onClick={handleChangeToLogin}
+              >
+                Login
+              </Button>
+              <Button className="w-24 bg-emerald-500">Register</Button>
             </DialogFooter>
           </form>
         </Form>
