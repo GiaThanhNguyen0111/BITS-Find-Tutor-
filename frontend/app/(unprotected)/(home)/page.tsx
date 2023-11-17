@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { BookA, GraduationCap, CalendarCheck, Users } from "lucide-react";
+import { useModal } from "@/hooks/useModal";
 
 const HomePage = () => {
+  const { onOpen } = useModal();
   return (
     <div className="home-container h-3/4 px-20 pb-20">
       {/* Hero Container */}
@@ -29,7 +31,10 @@ const HomePage = () => {
           </p>
           <p className="mt-2 text-xl">Let&apos;s start your learning today.</p>
           <div className="mt-5 flex gap-5">
-            <Button className="w-56 text-xl bg-emerald-500 hover:bg-[#019c91]">
+            <Button
+              className="w-56 text-xl bg-emerald-500 hover:bg-[#019c91]"
+              onClick={() => onOpen("login")}
+            >
               Get started
             </Button>
           </div>
