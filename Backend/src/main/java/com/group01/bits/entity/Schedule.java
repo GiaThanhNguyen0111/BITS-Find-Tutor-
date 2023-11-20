@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Builder
@@ -21,9 +22,9 @@ public class Schedule {
     @Column(name = "schedule_id")
     private Long scheduleID;
 
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private List<User> users;
 
     @Column(name = "start_time")
     private LocalDateTime startTime;

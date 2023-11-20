@@ -45,18 +45,20 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Qualification> qualifications;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @ManyToMany
+    @JoinTable(
+            name = "user_schedule",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "schedule_id")
+    )
     private List<Schedule> schedules;
 
-    @ManyToMany(mappedBy = "user")
+    @ManyToMany
     @JoinTable(
             name = "tutor_subject",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "subject_id")
     )
-
-
-
     private List<Subject> subjects;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
