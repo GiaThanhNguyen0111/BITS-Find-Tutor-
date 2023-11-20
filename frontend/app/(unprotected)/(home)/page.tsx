@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { BookA, GraduationCap, CalendarCheck, Users } from "lucide-react";
+import { useModal } from "@/hooks/useModal";
 
 const HomePage = () => {
+  const { onOpen } = useModal();
   return (
     <div className="home-container h-3/4 px-20 pb-20">
       {/* Hero Container */}
@@ -30,13 +32,10 @@ const HomePage = () => {
           <p className="mt-2 text-xl">Let&apos;s start your learning today.</p>
           <div className="mt-5 flex gap-5">
             <Button
-              variant={"secondary"}
-              className="w-48 text-xl hover:bg-[#d8d4d6]"
+              className="w-56 text-xl bg-emerald-500 hover:bg-[#019c91]"
+              onClick={() => onOpen("login")}
             >
-              Sign up
-            </Button>
-            <Button className="w-48 text-xl bg-emerald-500 hover:bg-[#019c91]">
-              Login
+              Get started
             </Button>
           </div>
         </motion.div>
@@ -50,7 +49,7 @@ const HomePage = () => {
           <Lottie animationData={mainAnimation} />
         </motion.div>
       </div>
-      <h2 className="text-center text-black text-2xl font-bold mb-10">
+      <h2 className="text-center text-black text-4xl font-bold mb-10">
         The best way for online education
       </h2>
       <div className="card-container w-full flex justify-around gap-10  mb-24">
@@ -142,7 +141,7 @@ const HomePage = () => {
       <motion.div
         initial={{ opacity: 0, x: 100 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 0.75 }}
+        transition={{ duration: 1 }}
         viewport={{ once: true }}
         className="why-container w-full flex px-20 mb-8"
       >
@@ -150,7 +149,7 @@ const HomePage = () => {
           <Lottie animationData={main2Animation} />
         </div>
         <div className="flex-1 flex justify-center  flex-col ">
-          <p className="font-bold text-3xl text-center">What sets us apart?</p>
+          <p className="font-bold text-4xl text-center">What sets us apart?</p>
           <p className="text-xl mt-2 text-center">
             At{" "}
             <span className="text-emerald-500 uppercase font-semibold">
