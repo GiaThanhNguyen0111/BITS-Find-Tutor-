@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public interface AuthenticationService {
-    AuthenticationResponseDTO register(AuthenticationRequestDTO request);
+    AuthenticationResponseDTO register(AuthenticationRequestDTO request) throws Exception;
     AuthenticationResponseDTO authenticate(AuthenticationRequestDTO request);
 
     void refreshToken(HttpServletRequest request, HttpServletResponse response);

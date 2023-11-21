@@ -10,7 +10,7 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - ./database_storage:/docker-entrypoint-initdb.d
+      - ./database_storage/FINDING_TUTOR_V1.sql:/docker-entrypoint-initdb.d/FINDING_TUTOR_V1.sql
   app:
     depends_on:
       - mysqldb

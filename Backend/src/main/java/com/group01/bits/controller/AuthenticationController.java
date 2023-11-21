@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/api/v1/auth/")
 public interface AuthenticationController {
     @PostMapping("register")
-    ResponseEntity<AuthenticationResponseDTO> postRegister(@RequestBody AuthenticationRequestDTO request);
+    ResponseEntity<AuthenticationResponseDTO> postRegister(@RequestBody AuthenticationRequestDTO request) throws Exception;
 
     @PostMapping("authenticate")
     ResponseEntity<AuthenticationResponseDTO> postAuthenticate(@RequestBody AuthenticationRequestDTO request);

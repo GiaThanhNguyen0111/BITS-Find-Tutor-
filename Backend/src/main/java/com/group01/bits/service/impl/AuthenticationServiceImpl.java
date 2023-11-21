@@ -18,6 +18,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+import java.util.regex.Pattern;
 
 @Service
 @RequiredArgsConstructor
@@ -32,9 +34,25 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final AuthenticationManager authenticationManager;
 
+    private static final String REGEX_CHECK_EMAIL = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+
+    private static final String REGEX_CHECK_PASSWORD = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+
     @Override
     @Transactional
-    public AuthenticationResponseDTO register(AuthenticationRequestDTO request) {
+    public AuthenticationResponseDTO register(AuthenticationRequestDTO request) throws Exception {
+        if(isExisted(request.getEmail())) {
+            log.info("===== Email {} is existed =====", request.getEmail());
+            throw new Exception("Email is existed");
+        }
+        if (!checkEmail(request.getEmail())) {
+            log.info("====== Email {} is invalid =====", request.getEmail());
+            throw new Exception("Email is invalid");
+        }
+        if(!checkPassword(request.getPassword())) {
+            log.info("======= Password {} is invalid =====", request.getPassword());
+            throw new Exception("Password is invalid");
+        }
         User user = User.builder()
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
@@ -60,20 +78,35 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         } catch (Exception e) {
             log.info("===Exception=== {}", e.getMessage());
         }
-//        authenticationManager.authenticate(
-//                new UsernamePasswordAuthenticationToken(
-//                        request.getEmail(),
-//                        request.getPassword()
-//                )
-//        );
         User user = userRepository.findByEmail(request.getEmail()).orElseThrow();
         Map<String, String> map = new HashMap<>();
-        map.put("role", request.getRole());
+        map.put("role", user.getRole());
         Map<String, String> claims = new HashMap<>();
         claims.put("role", request.getRole());
         String jwtToken = jwtAdapter.generateToken(claims, user, user.getUserID());
 
         return AuthenticationResponseDTO.builder().accessToken(jwtToken).build();
+    }
+
+    private boolean isExisted(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+
+        if(user.isPresent()) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkEmail(String email) {
+        return Pattern.compile(REGEX_CHECK_EMAIL)
+                .matcher(email)
+                .matches();
+    }
+
+    private boolean checkPassword(String password) {
+        return Pattern.compile(REGEX_CHECK_PASSWORD)
+                .matcher(password)
+                .matches();
     }
 
     @Override

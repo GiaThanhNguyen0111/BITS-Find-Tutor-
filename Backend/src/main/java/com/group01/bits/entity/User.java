@@ -98,4 +98,8 @@ public class User implements UserDetails {
     public Long getUserID() {
         return userID;
     }
+
+    public String getRole() {
+        return role;
+    }
 }

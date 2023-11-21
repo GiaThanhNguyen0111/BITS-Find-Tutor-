@@ -17,7 +17,7 @@ public class AuthenticationControllerImpl implements AuthenticationController {
     private final AuthenticationService authenticationService;
 
     @Override
-    public ResponseEntity<AuthenticationResponseDTO> postRegister(AuthenticationRequestDTO request) {
+    public ResponseEntity<AuthenticationResponseDTO> postRegister(AuthenticationRequestDTO request) throws Exception {
         log.info(request.toString());
         AuthenticationResponseDTO authenticationResponseDTO = authenticationService.register(request);
         return ResponseEntity.ok(authenticationResponseDTO);

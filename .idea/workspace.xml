@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d250912b-8c25-437d-88a1-683e7cb6d7f8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/impl/AuthenticationControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/impl/AuthenticationControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/impl/AuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/impl/AuthenticationServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +61,8 @@
       <workItem from="1699984983917" duration="439000" />
       <workItem from="1700015210114" duration="1000" />
       <workItem from="1700015220127" duration="6000" />
+      <workItem from="1700025276891" duration="691000" />
+      <workItem from="1700380974314" duration="2358000" />
     </task>
     <servers />
   </component>
