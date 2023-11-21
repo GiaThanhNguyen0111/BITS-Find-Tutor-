@@ -11,6 +11,7 @@ import {
   DialogTitle,
   DialogHeader,
   DialogFooter,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import {
   Form,
@@ -22,6 +23,10 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { jwtDecode } from "jwt-decode";
+import { useAuth } from "@/hooks/useAuth";
+import { MyJWT } from "@/types";
+import { redirect } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string().min(1, { message: "Email is required" }),
@@ -32,6 +37,7 @@ const formSchema = z.object({
 
 export const LoginModal = () => {
   const { isOpen, onClose, type, onOpen } = useModal();
+  const { login } = useAuth();
   const isModalOpen = isOpen && type === "login";
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -43,7 +49,28 @@ export const LoginModal = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/auth/authenticate`
+    );
+    if (response.status == 200) {
+      const { data } = response;
+      const accessToken = data.access_token;
+      const decodedToken = jwtDecode<MyJWT>(accessToken);
+      if (decodedToken && decodedToken.role) {
+        if (decodedToken.role === "student") {
+          login("student", accessToken);
+          return redirect("/student");
+        } else if (decodedToken.role === "tutor") {
+          login("tutor", accessToken);
+          return redirect("/tutor");
+        } else if (decodedToken.role === "admin") {
+          login("admin", accessToken);
+          return redirect("/admin");
+        }
+      }
+    } else {
+      alert("There is a problem logging you in, maybe check your credentials");
+    }
   };
 
   const handleClose = () => {
@@ -109,14 +136,13 @@ export const LoginModal = () => {
                 )}
               />
             </div>
+            <DialogDescription
+              className="underline text-black cursor-pointer px-6"
+              onClick={handleChangeToRegister}
+            >
+              Do not have an account ? Register
+            </DialogDescription>
             <DialogFooter>
-              <Button
-                type="button"
-                className="w-24"
-                onClick={handleChangeToRegister}
-              >
-                Register
-              </Button>
               <Button type="submit" className="w-24 bg-emerald-500">
                 Login
               </Button>

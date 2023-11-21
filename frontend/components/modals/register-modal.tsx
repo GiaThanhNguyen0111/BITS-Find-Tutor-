@@ -10,6 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import {
   Form,
@@ -48,7 +49,16 @@ export const RegisterModal = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/auth/register`,
+      { ...values }
+    );
+    if (response.status === 200) {
+      handleChangeToLogin();
+      alert("Register successful");
+    } else {
+      alert("There is a problem registering");
+    }
   };
 
   const handleClose = () => {
@@ -146,14 +156,13 @@ export const RegisterModal = () => {
                 )}
               />
             </div>
+            <DialogDescription
+              className="underline text-black cursor-pointer px-6"
+              onClick={handleChangeToLogin}
+            >
+              Already have an account ? Login
+            </DialogDescription>
             <DialogFooter>
-              <Button
-                className="w-24"
-                type="button"
-                onClick={handleChangeToLogin}
-              >
-                Login
-              </Button>
               <Button className="w-24 bg-emerald-500">Register</Button>
             </DialogFooter>
           </form>
