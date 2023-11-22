@@ -26,10 +26,27 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useModal } from "@/hooks/useModal";
 
 const formSchema = z.object({
-  email: z.string().min(1, { message: "Email is required" }),
+  email: z
+    .string()
+    .refine(
+      (value) =>
+        /^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$/.test(value),
+      {
+        message: "Invalid email format. Please provide a valid email address.",
+      }
+    ),
   password: z
     .string()
-    .min(8, { message: "Password must have the minimum length of 8" }),
+    .refine(
+      (value) =>
+        /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$/.test(
+          value
+        ),
+      {
+        message:
+          "Password must be at least 8 characters long and include a mix of uppercase, lowercase, numbers, and special characters.",
+      }
+    ),
   role: z.enum(["student", "tutor"], {
     required_error: "You need to select your role",
   }),
