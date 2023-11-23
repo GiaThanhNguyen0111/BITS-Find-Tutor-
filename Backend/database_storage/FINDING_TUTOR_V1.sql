@@ -47,7 +47,6 @@ create table finding_tutor.subject
     subject_id   BIGINT NOT NULL AUTO_INCREMENT,
     subject_name VARCHAR(250),
     description  VARCHAR(250),
-    user_id      BIGINT,
     PRIMARY KEY (subject_id)
 );
 

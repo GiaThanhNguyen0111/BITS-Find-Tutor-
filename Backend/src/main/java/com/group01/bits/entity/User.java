@@ -1,11 +1,9 @@
 package com.group01.bits.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -18,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Setter
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,10 +41,12 @@ public class User implements UserDetails {
     @Column(name = "role")
     private String role;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Qualification> qualifications;
 
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_schedule",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -53,7 +54,8 @@ public class User implements UserDetails {
     )
     private List<Schedule> schedules;
 
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "tutor_subject",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -101,5 +103,33 @@ public class User implements UserDetails {
 
     public String getRole() {
         return role;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public Date getBirthDay() {
+        return birthDay;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public List<Qualification> getQualifications() {
+        return qualifications;
+    }
+
+    public List<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    public List<Subject> getSubjects() {
+        return subjects;
     }
 }

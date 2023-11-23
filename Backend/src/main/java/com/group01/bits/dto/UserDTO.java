@@ -1,7 +1,9 @@
 package com.group01.bits.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.group01.bits.entity.Qualification;
+import com.group01.bits.entity.Subject;
 import com.group01.bits.entity.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
@@ -19,6 +21,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDTO {
     @JsonProperty("userID")
     private Long userID;
@@ -34,5 +37,7 @@ public class UserDTO {
     private String role;
     @JsonProperty("qualifications")
     private List<Qualification> qualifications;
+//    @JsonProperty("subjects")
+//    private List<Subject> subjects;
 
 }

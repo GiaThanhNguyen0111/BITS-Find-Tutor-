@@ -56,6 +56,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         User user = User.builder()
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .role(request.getRole())
                 .build();
         userRepository.save(user);
         User userAccount = userRepository.findByEmail(request.getEmail()).orElseThrow();
@@ -79,10 +80,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             log.info("===Exception=== {}", e.getMessage());
         }
         User user = userRepository.findByEmail(request.getEmail()).orElseThrow();
-        Map<String, String> map = new HashMap<>();
-        map.put("role", user.getRole());
         Map<String, String> claims = new HashMap<>();
-        claims.put("role", request.getRole());
+        claims.put("role", user.getRole());
         String jwtToken = jwtAdapter.generateToken(claims, user, user.getUserID());
 
         return AuthenticationResponseDTO.builder().accessToken(jwtToken).build();
