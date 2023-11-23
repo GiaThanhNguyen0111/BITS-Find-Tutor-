@@ -6,7 +6,7 @@ import { academicSubjects } from "@/dummyData";
 const StudentMainPage = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="w-full h-48 bg-black flex justify-center items-center">
+      <div className="w-full h-48 bg-gradient-to-r from-[#10b981] to-[#98EECC] flex justify-center items-center">
         <p className="text-white text-center text-5xl font-bold">
           Find your tutor
         </p>
