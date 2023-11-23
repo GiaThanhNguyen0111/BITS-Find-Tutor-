@@ -76,7 +76,7 @@ export const LoginModal = () => {
       if (decodedToken && decodedToken.role) {
         if (decodedToken.role === "student") {
           login("student", accessToken);
-          return redirect("/student");
+          return redirect("/student/findtutor");
         } else if (decodedToken.role === "tutor") {
           login("tutor", accessToken);
           return redirect("/tutor");

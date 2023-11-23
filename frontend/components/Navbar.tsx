@@ -22,9 +22,8 @@ const Navbar = () => {
   const { onOpen } = useModal();
 
   const studentNavigation = [
-    { label: "navigation 1", url: "/" },
-    { label: "navigation 2", url: "/path2" },
-    { label: "navigation 3", url: "/path3" },
+    { label: "Find a tutor", url: "/student/findtutor" },
+    { label: "Your schedule", url: "/schedule" },
   ];
 
   const tutorNavigation = [

@@ -1,5 +1,5 @@
 const TutorDisplay = () => {
-  return <div>TutorDisplay</div>;
+  return <></>;
 };
 
 export default TutorDisplay;
