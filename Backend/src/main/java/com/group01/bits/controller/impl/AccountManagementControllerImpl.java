@@ -3,9 +3,11 @@ package com.group01.bits.controller.impl;
 import com.group01.bits.appfilter.AppFilter;
 import com.group01.bits.constants.Role;
 import com.group01.bits.controller.AccountManagementController;
+import com.group01.bits.dto.AvailableTimeDTO;
 import com.group01.bits.dto.QualificationDTO;
 import com.group01.bits.dto.SubjectDTO;
 import com.group01.bits.dto.UserDTO;
+import com.group01.bits.entity.AvailableTime;
 import com.group01.bits.service.BaseService;
 import com.group01.bits.service.ManageAccountService;
 import lombok.AllArgsConstructor;
@@ -41,8 +43,10 @@ public class AccountManagementControllerImpl implements AccountManagementControl
     }
 
     @Override
-    public ResponseEntity<QualificationDTO> getQualifications(UserDTO request, String authorizationString) {
-        return null;
+    public ResponseEntity<List<QualificationDTO>> getQualifications(UserDTO request, String authorizationString) {
+        String jwtToken = baseService.extractToken(authorizationString);
+        String email = jwtAdapter.extractUsername(jwtToken);
+        return ResponseEntity.ok(manageAccountService.getQualifications(email));
     }
 
     @Override
@@ -65,6 +69,11 @@ public class AccountManagementControllerImpl implements AccountManagementControl
 
     @Override
     public ResponseEntity<UserDTO> postAddQualification(UserDTO request, String authorizationString) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<List<AvailableTime>> postAddAvailableTime(AvailableTimeDTO request, String authorizationString) {
         return null;
     }
 

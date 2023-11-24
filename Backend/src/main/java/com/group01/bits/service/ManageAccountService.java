@@ -1,5 +1,6 @@
 package com.group01.bits.service;
 
+import com.group01.bits.dto.QualificationDTO;
 import com.group01.bits.dto.SubjectDTO;
 import com.group01.bits.dto.UserDTO;
 
@@ -11,6 +12,6 @@ public interface ManageAccountService {
     UserDTO addSchedule(UserDTO userDTO);
     List<UserDTO> getTutorByName(String name);
     List<UserDTO> getTutorBySubject(SubjectDTO subject);
-
     List<UserDTO> getAllTutor();
+    List<QualificationDTO> getQualifications(String email);
 }

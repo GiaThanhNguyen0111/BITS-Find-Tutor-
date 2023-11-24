@@ -1,9 +1,12 @@
 package com.group01.bits.service.impl;
 
+import com.group01.bits.dto.QualificationDTO;
 import com.group01.bits.dto.SubjectDTO;
 import com.group01.bits.dto.UserDTO;
+import com.group01.bits.entity.Qualification;
 import com.group01.bits.entity.Subject;
 import com.group01.bits.entity.User;
+import com.group01.bits.repository.QualificationRepository;
 import com.group01.bits.repository.SubjectRepository;
 import com.group01.bits.repository.UserRepository;
 import com.group01.bits.service.ManageAccountService;
@@ -24,6 +27,8 @@ public class ManageAccountServiceImpl implements ManageAccountService {
     private final UserRepository userRepository;
 
     private final SubjectRepository subjectRepository;
+
+    private final QualificationRepository qualificationRepository;
 
     @Override
     @Transactional
@@ -106,5 +111,22 @@ public class ManageAccountServiceImpl implements ManageAccountService {
             userDTOS.add(userDTO);
         }
         return userDTOS;
+    }
+
+    @Override
+    public List<QualificationDTO> getQualifications(String email) {
+        User user = userRepository.findByEmail(email).orElseThrow();
+        Long userId = user.getUserID();
+        List<Qualification> qualifications = qualificationRepository.getQualificationByUserId(userId).orElseThrow();
+        List<QualificationDTO> qualificationDTOS =new ArrayList<>();
+        for (Qualification qualification: qualifications) {
+            QualificationDTO qualificationDTO = QualificationDTO.builder()
+                    .qualificationID(qualification.getQualificationID())
+                    .description(qualification.getDescription())
+                    .expiryDate(qualification.getExpiryDate())
+                    .build();
+            qualificationDTOS.add(qualificationDTO);
+        }
+        return qualificationDTOS;
     }
 }

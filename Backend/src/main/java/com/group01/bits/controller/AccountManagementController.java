@@ -1,8 +1,10 @@
 package com.group01.bits.controller;
 
+import com.group01.bits.dto.AvailableTimeDTO;
 import com.group01.bits.dto.QualificationDTO;
 import com.group01.bits.dto.SubjectDTO;
 import com.group01.bits.dto.UserDTO;
+import com.group01.bits.entity.AvailableTime;
 import com.group01.bits.entity.Qualification;
 import com.group01.bits.entity.Subject;
 import com.group01.bits.entity.User;
@@ -22,7 +24,7 @@ public interface AccountManagementController {
     ResponseEntity<List<UserDTO>> getTutorBySubject(@RequestBody SubjectDTO request);
 
     @GetMapping("getQualifications")
-    ResponseEntity<QualificationDTO> getQualifications(@RequestBody UserDTO request, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorizationString);
+    ResponseEntity<List<QualificationDTO>> getQualifications(@RequestBody UserDTO request, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorizationString);
 
     @PostMapping("addSubjects")
     ResponseEntity<UserDTO> postAddSubjects(@RequestBody List<SubjectDTO> request, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorizationString);
@@ -32,6 +34,9 @@ public interface AccountManagementController {
 
     @PostMapping("addQualification")
     ResponseEntity<UserDTO> postAddQualification(@RequestBody UserDTO request, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorizationString);
+
+    @PostMapping("addAvailableTime")
+    ResponseEntity<List<AvailableTime>> postAddAvailableTime(@RequestBody AvailableTimeDTO request, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorizationString);
 
     @GetMapping("getAllUser")
     ResponseEntity<List<UserDTO>> getAllTutor();
