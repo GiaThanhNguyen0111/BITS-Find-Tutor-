@@ -52,3 +52,54 @@ export const academicSubjects: Subject[] = [
     subject_description: "Study of society and human social behavior",
   },
 ];
+
+export let originTeacherArray = [
+  {
+    name: "Alex",
+    subjects: ["Mathematics"],
+  },
+  {
+    name: "Bob",
+    subjects: ["History"],
+  },
+  {
+    name: "Charlie",
+    subjects: ["English", "Psychology", "History"],
+  },
+  {
+    name: "David",
+    subjects: ["Science"],
+  },
+  {
+    name: "Eva",
+    subjects: ["Geography"],
+  },
+  {
+    name: "Frank",
+    subjects: ["Computer Science"],
+  },
+  {
+    name: "Grace",
+    subjects: ["Economics", "Sociology"],
+  },
+  {
+    name: "Hank",
+    subjects: ["Foreign Languages"],
+  },
+  {
+    name: "Ivy",
+    subjects: ["Mathematics", "History"],
+  },
+  {
+    name: "Jack",
+    subjects: ["Psychology"],
+  },
+  {
+    name: "Kelly",
+    subjects: ["Computer Science", "Economics"],
+  },
+  {
+    name: "Leo",
+    subjects: ["Science", "Geography"],
+  },
+];

@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const studentNavigation = [
     { label: "Find a tutor", url: "/student/findtutor" },
-    { label: "Your schedule", url: "/schedule" },
+    { label: "Your schedule", url: "/student/schedule" },
   ];
 
   const tutorNavigation = [
@@ -67,7 +67,7 @@ const Navbar = () => {
 
       <div>
         {!!role && (
-          <Avatar>
+          <Avatar onClick={() => onOpen("profile")} className="cursor-pointer">
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
