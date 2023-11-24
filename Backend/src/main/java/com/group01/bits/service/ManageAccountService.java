@@ -11,4 +11,6 @@ public interface ManageAccountService {
     UserDTO addSchedule(UserDTO userDTO);
     List<UserDTO> getTutorByName(String name);
     List<UserDTO> getTutorBySubject(SubjectDTO subject);
+
+    List<UserDTO> getAllTutor();
 }

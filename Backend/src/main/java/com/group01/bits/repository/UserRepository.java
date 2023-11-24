@@ -26,4 +26,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "SELECT u.* FROM user AS u WHERE u.role = \"TUTOR\" AND u.full_name = ?1", nativeQuery = true)
     Optional<List<User>> findTutorByName(String fullName);
 
+    @Query(value = "SELECT u.* FROM user AS u WHERE u.role = \"TUTOR\"", nativeQuery = true)
+    Optional<List<User>> findAllTutor();
+
 }

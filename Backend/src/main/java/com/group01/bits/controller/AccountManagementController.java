@@ -32,4 +32,7 @@ public interface AccountManagementController {
 
     @PostMapping("addQualification")
     ResponseEntity<UserDTO> postAddQualification(@RequestBody UserDTO request, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorizationString);
+
+    @GetMapping("getAllUser")
+    ResponseEntity<List<UserDTO>> getAllTutor();
 }

@@ -16,6 +16,7 @@ create table qualification
     name             VARCHAR(250),
     description      VARCHAR(250),
     expiry_date      DATE,
+    image     VARCHAR(1000),
     user_id          BIGINT,
     PRIMARY KEY (qualification_id)
 );
@@ -69,6 +70,7 @@ create table user
     major     VARCHAR(250),
     password  VARCHAR(250),
     role      VARCHAR(250),
+    image     VARCHAR(1000),
     PRIMARY KEY (user_id)
 );
 

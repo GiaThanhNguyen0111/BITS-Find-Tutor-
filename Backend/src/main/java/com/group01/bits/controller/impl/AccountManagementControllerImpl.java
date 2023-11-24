@@ -68,4 +68,9 @@ public class AccountManagementControllerImpl implements AccountManagementControl
         return null;
     }
 
+    @Override
+    public ResponseEntity<List<UserDTO>> getAllTutor() {
+        return ResponseEntity.ok(manageAccountService.getAllTutor());
+    }
+
 }

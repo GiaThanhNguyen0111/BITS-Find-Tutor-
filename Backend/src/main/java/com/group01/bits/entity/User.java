@@ -38,12 +38,19 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "image")
+    private String image;
+
     @Column(name = "role")
     private String role;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Qualification> qualifications;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<AvailableTime> availableTimes;
 
     @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
@@ -131,5 +138,13 @@ public class User implements UserDetails {
 
     public List<Subject> getSubjects() {
         return subjects;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public List<AvailableTime> getAvailableTimes() {
+        return availableTimes;
     }
 }

@@ -7,6 +7,7 @@ import com.group01.bits.entity.User;
 import com.group01.bits.repository.SubjectRepository;
 import com.group01.bits.repository.UserRepository;
 import com.group01.bits.service.ManageAccountService;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -86,5 +87,24 @@ public class ManageAccountServiceImpl implements ManageAccountService {
             userDTOs.add(userDTO);
         }
         return userDTOs;
+    }
+
+    @Override
+    public List<UserDTO> getAllTutor() throws EntityNotFoundException {
+        List<UserDTO> userDTOS = new ArrayList<>();
+        List<User> users = userRepository.findAllTutor().orElseThrow();
+        for (User user: users) {
+            UserDTO userDTO = UserDTO.builder()
+                    .userID(user.getUserID())
+                    .birthDay(user.getBirthDay())
+                    .qualifications(user.getQualifications())
+                    .role(user.getRole())
+                    .subjects(user.getSubjects())
+                    .availableTimes(user.getAvailableTimes())
+                    .major(user.getMajor())
+                    .build();
+            userDTOS.add(userDTO);
+        }
+        return userDTOS;
     }
 }
