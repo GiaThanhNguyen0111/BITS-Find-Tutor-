@@ -4,10 +4,20 @@ import TutorFilter from "@/components/student/TutorFilter";
 import { academicSubjects } from "@/dummyData";
 import { Subject } from "@/types";
 import { useState } from "react";
+import loadingAnimation from "@/animation/loading.json";
+import Lottie from "lottie-react";
 
 const StudentMainPage = () => {
   const [validSubjects, setValidSubjects] = useState<Subject[]>([]);
-  
+  const [loading, setLoading] = useState(false);
+  if (loading) {
+    return (
+      <div className="flex flex-col justify-center items-center min-h-screen">
+        <Lottie animationData={loadingAnimation} />
+        <p>Loading...</p>
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col min-h-screen">
       <div className="w-full h-48 bg-gradient-to-r from-[#10b981] to-[#98EECC] flex justify-center items-center">

@@ -48,7 +48,6 @@ const TutorFilter = ({
                       currentSubject.subject_name !== subject.subject_name
                   );
                 }
-                console.log(newSubjectArray);
                 setValidSubjects(newSubjectArray);
               }}
             />

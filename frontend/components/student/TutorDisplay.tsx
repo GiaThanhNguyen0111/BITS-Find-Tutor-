@@ -7,57 +7,7 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Subject } from "@/types";
 import { boolean } from "zod";
-
-let originTeacherArray = [
-  {
-    name: "Alex",
-    subjects: ["Mathematics"],
-  },
-  {
-    name: "Bob",
-    subjects: ["History"],
-  },
-  {
-    name: "Charlie",
-    subjects: ["English", "Psychology", "History"],
-  },
-  {
-    name: "David",
-    subjects: ["Science"],
-  },
-  {
-    name: "Eva",
-    subjects: ["Geography"],
-  },
-  {
-    name: "Frank",
-    subjects: ["Computer Science"],
-  },
-  {
-    name: "Grace",
-    subjects: ["Economics", "Sociology"],
-  },
-  {
-    name: "Hank",
-    subjects: ["Foreign Languages"],
-  },
-  {
-    name: "Ivy",
-    subjects: ["Mathematics", "History"],
-  },
-  {
-    name: "Jack",
-    subjects: ["Psychology"],
-  },
-  {
-    name: "Kelly",
-    subjects: ["Computer Science", "Economics"],
-  },
-  {
-    name: "Leo",
-    subjects: ["Science", "Geography"],
-  },
-];
+import { originTeacherArray } from "@/dummyData";
 
 interface TutorDisplayProps {
   validSubjects: Subject[];
@@ -67,9 +17,9 @@ const TutorDisplay = ({ validSubjects }: TutorDisplayProps) => {
   const [loading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 9;
-  let dummyTeacherArray = originTeacherArray;
+  let filteredArray = originTeacherArray;
   if (validSubjects.length !== 0) {
-    dummyTeacherArray = originTeacherArray.filter((teacher) => {
+    filteredArray = originTeacherArray.filter((teacher) => {
       const teacherSubjects = teacher.subjects;
       return teacherSubjects.some((subject) =>
         validSubjects.some(
@@ -85,7 +35,7 @@ const TutorDisplay = ({ validSubjects }: TutorDisplayProps) => {
     return <p className="text-center">Loading...</p>;
   }
 
-  const totalPages = Math.ceil(dummyTeacherArray.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredArray.length / itemsPerPage);
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
@@ -96,7 +46,7 @@ const TutorDisplay = ({ validSubjects }: TutorDisplayProps) => {
       <div className="min-h-screen">
         <h2 className="text-center text-3xl font-semibold">Available Tutors</h2>
         <div className="grid grid-cols-3 gap-5 mt-5 ml-5 px-16">
-          {dummyTeacherArray.slice(startIndex, endIndex).map((teacher) => (
+          {filteredArray.slice(startIndex, endIndex).map((teacher) => (
             <Card
               key={teacher.name}
               className="h-56 w-full cursor-pointer hover:scale-105 transition"
