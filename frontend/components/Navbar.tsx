@@ -67,7 +67,7 @@ const Navbar = () => {
 
       <div>
         {!!role && (
-          <Avatar>
+          <Avatar onClick={() => onOpen("profile")} className="cursor-pointer">
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>

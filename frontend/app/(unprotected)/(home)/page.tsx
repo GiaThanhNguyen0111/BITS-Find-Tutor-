@@ -7,9 +7,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { BookA, GraduationCap, CalendarCheck, Users } from "lucide-react";
 import { useModal } from "@/hooks/useModal";
+import { useAuth } from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
 
 const HomePage = () => {
   const { onOpen } = useModal();
+  const { role } = useAuth();
+  const router = useRouter();
   return (
     <div className="home-container h-3/4 px-20 pb-20">
       {/* Hero Container */}
@@ -33,7 +37,13 @@ const HomePage = () => {
           <div className="mt-5 flex gap-5">
             <Button
               className="w-56 text-xl bg-emerald-500 hover:bg-[#019c91]"
-              onClick={() => onOpen("login")}
+              onClick={() => {
+                if (role == null) {
+                  onOpen("login");
+                } else if (role == "student") {
+                  return router.push("/student/findtutor");
+                }
+              }}
             >
               Get started
             </Button>
