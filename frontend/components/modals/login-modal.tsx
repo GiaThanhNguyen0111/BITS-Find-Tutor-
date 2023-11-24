@@ -26,7 +26,7 @@ import { Input } from "@/components/ui/input";
 import { jwtDecode } from "jwt-decode";
 import { useAuth } from "@/hooks/useAuth";
 import { MyJWT } from "@/types";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z
@@ -55,6 +55,7 @@ const formSchema = z.object({
 export const LoginModal = () => {
   const { isOpen, onClose, type, onOpen } = useModal();
   const { login } = useAuth();
+  const router = useRouter();
   const isModalOpen = isOpen && type === "login";
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -67,22 +68,24 @@ export const LoginModal = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/auth/authenticate`
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/auth/authenticate`,
+      { ...values }
     );
     if (response.status == 200) {
       const { data } = response;
       const accessToken = data.access_token;
       const decodedToken = jwtDecode<MyJWT>(accessToken);
       if (decodedToken && decodedToken.role) {
+        onClose();
         if (decodedToken.role === "student") {
           login("student", accessToken);
-          return redirect("/student/findtutor");
+          return router.push("/student/findtutor");
         } else if (decodedToken.role === "tutor") {
           login("tutor", accessToken);
-          return redirect("/tutor");
+          return router.push("/tutor");
         } else if (decodedToken.role === "admin") {
           login("admin", accessToken);
-          return redirect("/admin");
+          return router.push("/admin");
         }
       }
     } else {

@@ -19,7 +19,6 @@ const ProfileModal = () => {
   const isModalOpen = isOpen && type === "profile";
   const handleLogOut = () => {
     logout();
-    router.push("/");
     onClose();
   };
   return (
