@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const studentNavigation = [
     { label: "Find a tutor", url: "/student/findtutor" },
-    { label: "Your schedule", url: "/schedule" },
+    { label: "Your schedule", url: "/student/schedule" },
   ];
 
   const tutorNavigation = [

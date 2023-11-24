@@ -11,9 +11,15 @@ import { Subject } from "@/types";
 
 interface TutorFilterProps {
   subjects: Subject[];
+  validSubjects: Subject[];
+  setValidSubjects: (selectedSubjects: Subject[]) => void;
 }
 
-const TutorFilter = ({ subjects }: TutorFilterProps) => {
+const TutorFilter = ({
+  subjects,
+  validSubjects,
+  setValidSubjects,
+}: TutorFilterProps) => {
   return (
     <>
       <div className="mb-3 py-1 max-w-full">
@@ -30,7 +36,22 @@ const TutorFilter = ({ subjects }: TutorFilterProps) => {
         <h3 className="mb-3 font-semibold">Filter by Subject</h3>
         {subjects.map((subject) => (
           <div key={subject.subject_id}>
-            <Checkbox className="mr-2" />
+            <Checkbox
+              className="mr-2"
+              onCheckedChange={(checked) => {
+                let newSubjectArray;
+                if (checked) {
+                  newSubjectArray = [...validSubjects, subject];
+                } else {
+                  newSubjectArray = validSubjects.filter(
+                    (currentSubject) =>
+                      currentSubject.subject_name !== subject.subject_name
+                  );
+                }
+                console.log(newSubjectArray);
+                setValidSubjects(newSubjectArray);
+              }}
+            />
             <Label>{subject.subject_name}</Label>
           </div>
         ))}

@@ -2,8 +2,12 @@
 import TutorDisplay from "@/components/student/TutorDisplay";
 import TutorFilter from "@/components/student/TutorFilter";
 import { academicSubjects } from "@/dummyData";
+import { Subject } from "@/types";
+import { useState } from "react";
 
 const StudentMainPage = () => {
+  const [validSubjects, setValidSubjects] = useState<Subject[]>([]);
+  
   return (
     <div className="flex flex-col min-h-screen">
       <div className="w-full h-48 bg-gradient-to-r from-[#10b981] to-[#98EECC] flex justify-center items-center">
@@ -13,10 +17,14 @@ const StudentMainPage = () => {
       </div>
       <div className="h-full flex flex-col md:flex-row mt-10 px-10">
         <div className="h-full w-full md:w-1/5 px-1">
-          <TutorFilter subjects={academicSubjects} />
+          <TutorFilter
+            subjects={academicSubjects}
+            validSubjects={validSubjects}
+            setValidSubjects={setValidSubjects}
+          />
         </div>
         <div className="w-full md:w-4/5 ">
-          <TutorDisplay />
+          <TutorDisplay validSubjects={validSubjects} />
         </div>
       </div>
     </div>
