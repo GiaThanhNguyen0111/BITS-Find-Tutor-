@@ -16,10 +16,21 @@ import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/hooks/useAuth";
 import { useModal } from "@/hooks/useModal";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const { role } = useAuth();
   const { onOpen } = useModal();
+  const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  });
+
+  if (!mounted) {
+    return "";
+  }
 
   const studentNavigation = [
     { label: "Find a tutor", url: "/student/findtutor" },
@@ -41,10 +52,14 @@ const Navbar = () => {
         <NavigationMenu>
           <NavigationMenuList className="flex gap-16">
             {studentNavigation.map((navigation) => (
-              <NavigationMenuItem key={navigation.label}>
-                <NavigationMenuLink href={navigation.url}>
-                  {navigation.label}
-                </NavigationMenuLink>
+              <NavigationMenuItem
+                key={navigation.label}
+                className="cursor-pointer"
+                onClick={() => {
+                  router.push(navigation.url);
+                }}
+              >
+                {navigation.label}
               </NavigationMenuItem>
             ))}
           </NavigationMenuList>
@@ -55,11 +70,10 @@ const Navbar = () => {
         <NavigationMenu>
           <NavigationMenuList className="flex gap-16">
             {tutorNavigation.map((navigation) => (
-              <NavigationMenuItem key={navigation.label}>
-                <NavigationMenuLink href={navigation.url}>
-                  {navigation.label}
-                </NavigationMenuLink>
-              </NavigationMenuItem>
+              <NavigationMenuItem
+                key={navigation.label}
+                onClick={() => {}}
+              ></NavigationMenuItem>
             ))}
           </NavigationMenuList>
         </NavigationMenu>
