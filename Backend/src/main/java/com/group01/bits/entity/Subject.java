@@ -26,6 +26,6 @@ public class Subject {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "subjects")
+    @ManyToMany(mappedBy = "subjects", fetch = FetchType.LAZY)
     private List<User> users;
 }

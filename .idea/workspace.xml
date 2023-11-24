@@ -5,15 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d250912b-8c25-437d-88a1-683e7cb6d7f8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/database_storage/FINDING_TUTOR_V1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/database_storage/FINDING_TUTOR_V1.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/impl/AuthenticationControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/impl/AuthenticationControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/appfilter/AppFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/appfilter/AppFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/AccountManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/AccountManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/impl/AccountManagementControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/impl/AccountManagementControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/dto/SubjectDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/dto/SubjectDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/entity/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/entity/Subject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/ManageAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/ManageAccountService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/impl/AuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/impl/AuthenticationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/impl/ManageAccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/impl/ManageAccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +70,9 @@
       <workItem from="1700015210114" duration="1000" />
       <workItem from="1700015220127" duration="6000" />
       <workItem from="1700025276891" duration="691000" />
-      <workItem from="1700380974314" duration="2358000" />
+      <workItem from="1700380974314" duration="3057000" />
+      <workItem from="1700662809941" duration="548000" />
+      <workItem from="1700759169005" duration="619000" />
     </task>
     <servers />
   </component>

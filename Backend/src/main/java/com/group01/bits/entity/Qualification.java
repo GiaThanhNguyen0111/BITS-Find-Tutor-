@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.builder.EqualsExclude;
 
 import java.util.Date;
 
@@ -28,6 +29,9 @@ public class Qualification {
 
     @Column(name = "expiry_date")
     private Date expiryDate;
+
+    @Column(name = "image")
+    private String image;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

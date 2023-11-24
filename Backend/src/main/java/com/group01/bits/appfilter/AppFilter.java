@@ -85,6 +85,10 @@ public class AppFilter extends OncePerRequestFilter {
             return extractClaim(jwtToken, Claims::getSubject);
         }
 
+        public String extractRole(String jwtToken) {
+            return extractClaims(jwtToken).get("role", String.class);
+        }
+
         public String generateToken(UserDetails userDetails, Long idFamily) {
             return generateToken(new HashMap<>(), userDetails, idFamily);
         }
