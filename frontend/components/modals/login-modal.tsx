@@ -82,7 +82,7 @@ export const LoginModal = () => {
           return router.push("/student/findtutor");
         } else if (decodedToken.role === "tutor") {
           login("tutor", accessToken);
-          return router.push("/tutor");
+          return router.push("/tutor/tutorprofile");
         } else if (decodedToken.role === "admin") {
           login("admin", accessToken);
           return router.push("/admin");

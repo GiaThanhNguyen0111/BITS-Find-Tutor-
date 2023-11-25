@@ -38,7 +38,7 @@ const Navbar = () => {
   ];
 
   const tutorNavigation = [
-    { label: "tutor 1", url: "/" },
+    { label: "Tutor profile", url: "/tutor/tutorprofile" },
     { label: "tutor 2", url: "/path2" },
     { label: "tutor 3", url: "/path3" },
   ];
@@ -70,10 +70,12 @@ const Navbar = () => {
         <NavigationMenu>
           <NavigationMenuList className="flex gap-16">
             {tutorNavigation.map((navigation) => (
-              <NavigationMenuItem
+              <NavigationMenuItem className="cursor-pointer"
                 key={navigation.label}
-                onClick={() => {}}
-              ></NavigationMenuItem>
+                onClick={() => {router.push(navigation.url)}}
+              >
+                {navigation.label}
+              </NavigationMenuItem>
             ))}
           </NavigationMenuList>
         </NavigationMenu>
