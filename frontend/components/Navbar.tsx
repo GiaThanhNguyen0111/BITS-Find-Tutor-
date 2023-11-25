@@ -12,22 +12,32 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/hooks/useAuth";
 import { useModal } from "@/hooks/useModal";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const { role } = useAuth();
   const { onOpen } = useModal();
+  const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  });
+
+  if (!mounted) {
+    return "";
+  }
 
   const studentNavigation = [
     { label: "Find a tutor", url: "/student/findtutor" },
-    { label: "Your schedule", url: "/schedule" },
+    { label: "Your schedule", url: "/student/schedule" },
   ];
 
   const tutorNavigation = [
-    { label: "tutor 1", url: "/" },
+    { label: "Tutor profile", url: "/tutor/tutorprofile" },
     { label: "tutor 2", url: "/path2" },
     { label: "tutor 3", url: "/path3" },
   ];
@@ -41,10 +51,11 @@ const Navbar = () => {
         <NavigationMenu>
           <NavigationMenuList className="flex gap-16">
             {studentNavigation.map((navigation) => (
-              <NavigationMenuItem key={navigation.label}>
-                <NavigationMenuLink href={navigation.url}>
-                  {navigation.label}
-                </NavigationMenuLink>
+              <NavigationMenuItem
+                key={navigation.label}
+                className="cursor-pointer"
+              >
+                <Link href={navigation.url}>{navigation.label}</Link>
               </NavigationMenuItem>
             ))}
           </NavigationMenuList>
@@ -55,10 +66,11 @@ const Navbar = () => {
         <NavigationMenu>
           <NavigationMenuList className="flex gap-16">
             {tutorNavigation.map((navigation) => (
-              <NavigationMenuItem key={navigation.label}>
-                <NavigationMenuLink href={navigation.url}>
-                  {navigation.label}
-                </NavigationMenuLink>
+              <NavigationMenuItem
+                className="cursor-pointer"
+                key={navigation.label}
+              >
+                <Link href={navigation.url}>{navigation.label}</Link>
               </NavigationMenuItem>
             ))}
           </NavigationMenuList>
@@ -67,7 +79,7 @@ const Navbar = () => {
 
       <div>
         {!!role && (
-          <Avatar>
+          <Avatar onClick={() => onOpen("profile")} className="cursor-pointer">
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>

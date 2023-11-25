@@ -40,7 +40,7 @@ export const useAuth = create<AuthState>((set) => {
   const storedAccessToken = getCookie("authAccessToken");
 
   const initialState: AuthState = {
-    role: storedRole ? (storedRole as RoleType) : "student",
+    role: storedRole ? (storedRole as RoleType) : null,
     accessToken: storedAccessToken || null,
     login: (role, accessToken) => {
       set({ role, accessToken });
