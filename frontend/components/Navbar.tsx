@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/hooks/useAuth";
 import { useModal } from "@/hooks/useModal";
@@ -55,11 +54,8 @@ const Navbar = () => {
               <NavigationMenuItem
                 key={navigation.label}
                 className="cursor-pointer"
-                onClick={() => {
-                  router.push(navigation.url);
-                }}
               >
-                {navigation.label}
+                <Link href={navigation.url}>{navigation.label}</Link>
               </NavigationMenuItem>
             ))}
           </NavigationMenuList>
@@ -70,11 +66,11 @@ const Navbar = () => {
         <NavigationMenu>
           <NavigationMenuList className="flex gap-16">
             {tutorNavigation.map((navigation) => (
-              <NavigationMenuItem className="cursor-pointer"
+              <NavigationMenuItem
+                className="cursor-pointer"
                 key={navigation.label}
-                onClick={() => {router.push(navigation.url)}}
               >
-                {navigation.label}
+                <Link href={navigation.url}>{navigation.label}</Link>
               </NavigationMenuItem>
             ))}
           </NavigationMenuList>

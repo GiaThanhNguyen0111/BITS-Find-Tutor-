@@ -10,7 +10,7 @@ const TutorMainPage = () => {
         <TutorInfoDisplay />
         <TutorSubjectDisplay />
       </div>
-      <div className="w-full md:w-3/4">
+      <div className="w-full md:w-3/4 flex flex-col mt-10">
           <TutorQualifiDisplay/>
           <TutorScheduleDisplay/>
       </div>
