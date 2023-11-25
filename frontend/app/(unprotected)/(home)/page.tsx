@@ -42,6 +42,8 @@ const HomePage = () => {
                   onOpen("login");
                 } else if (role == "student") {
                   return router.push("/student/findtutor");
+                } else if (role == "tutor") {
+                  return router.push("/tutor/tutorprofile");
                 }
               }}
             >

@@ -8,7 +8,7 @@ const TutorMainPage = () => {
     <div className="min-h-screen flex flex-row">
       <div className="h-full w-full md:w-1/4 px-1 flex flex-col mt-10 border-8">
         <TutorInfoDisplay />
-        <TutorSubjectDisplay />
+        
       </div>
       <div className="w-full md:w-3/4 flex flex-col mt-10">
           <TutorQualifiDisplay/>
