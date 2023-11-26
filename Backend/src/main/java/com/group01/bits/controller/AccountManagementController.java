@@ -5,9 +5,6 @@ import com.group01.bits.dto.QualificationDTO;
 import com.group01.bits.dto.SubjectDTO;
 import com.group01.bits.dto.UserDTO;
 import com.group01.bits.entity.AvailableTime;
-import com.group01.bits.entity.Qualification;
-import com.group01.bits.entity.Subject;
-import com.group01.bits.entity.User;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,4 +37,8 @@ public interface AccountManagementController {
 
     @GetMapping("getAllUser")
     ResponseEntity<List<UserDTO>> getAllTutor();
+
+    interface BaseController {
+
+    }
 }

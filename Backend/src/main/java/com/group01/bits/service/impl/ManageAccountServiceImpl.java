@@ -14,6 +14,8 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,7 @@ import java.util.*;
 @RequiredArgsConstructor
 public class ManageAccountServiceImpl implements ManageAccountService {
 
+    @Lazy
     private final UserRepository userRepository;
 
     private final SubjectRepository subjectRepository;
@@ -60,6 +63,7 @@ public class ManageAccountServiceImpl implements ManageAccountService {
 
 
     @Override
+    @Cacheable(value="TUTOR", key="#name", unless="#result == null")
     public List<UserDTO> getTutorByName(String name) {
         List<UserDTO> userDTOs = new ArrayList<>();
         List<User> users = userRepository.findTutorByName(name).orElseThrow(() -> new UsernameNotFoundException("User's name not found"));
@@ -73,6 +77,7 @@ public class ManageAccountServiceImpl implements ManageAccountService {
                     .build();
             userDTOs.add(userDTO);
         }
+        log.info("==== userDTOS get Tutor By Name =======: {}", userDTOs.toString());
         return userDTOs;
     }
 
