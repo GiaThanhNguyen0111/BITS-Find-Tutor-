@@ -12,7 +12,7 @@ export const academicSubjects: Subject[] = [
   },
   {
     subject_id: "3",
-    subject_name: "English Language and Literature",
+    subject_name: "English",
     subject_description: "Study of English language and literary works",
   },
   {
