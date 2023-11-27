@@ -48,14 +48,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             log.info("===== Email {} is existed =====", request.getEmail());
             throw new BaseResponseException(ResponseStatusCode.builder().code("01").httpCode(HttpStatusCode.valueOf(200)).build());
         }
-//        if (!checkEmail(request.getEmail())) {
-//            log.info("====== Email {} is invalid =====", request.getEmail());
-//            throw new Exception("Email is invalid");
-//        }
-//        if(!checkPassword(request.getPassword())) {
-//            log.info("======= Password {} is invalid =====", request.getPassword());
-//            throw new Exception("Password is invalid");
-//        }
+        if (!checkEmail(request.getEmail())) {
+            log.info("====== Email {} is invalid =====", request.getEmail());
+            throw new BaseResponseException(ResponseStatusCode.builder().code("02").httpCode(HttpStatusCode.valueOf(200)).build());
+        }
+        if(!checkPassword(request.getPassword())) {
+            log.info("======= Password {} is invalid =====", request.getPassword());
+            throw new BaseResponseException(ResponseStatusCode.builder().code("03").httpCode(HttpStatusCode.valueOf(200)).build());
+        }
         User user = User.builder()
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
