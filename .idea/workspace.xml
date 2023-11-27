@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d250912b-8c25-437d-88a1-683e7cb6d7f8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/impl/AuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/impl/AuthenticationServiceImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="d250912b-8c25-437d-88a1-683e7cb6d7f8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
