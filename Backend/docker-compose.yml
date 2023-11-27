@@ -56,7 +56,7 @@ services:
       - "8081:8082"
     environment:
       server.port: 8082
-      spring.datasource.url: jdbc:mysql://192.168.1.71:3307/finding_tutor
+      spring.datasource.url: jdbc:mysql://192.168.1.11:3307/finding_tutor
       spring.datasource.username: group01
       spring.datasource.password: 123456a@
       spring.datasource.driver-class-name: com.mysql.cj.jdbc.Driver

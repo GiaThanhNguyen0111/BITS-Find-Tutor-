@@ -4,13 +4,16 @@ import com.group01.bits.appfilter.AppFilter;
 import com.group01.bits.dto.AuthenticationRequestDTO;
 import com.group01.bits.dto.AuthenticationResponseDTO;
 import com.group01.bits.entity.User;
+import com.group01.bits.exception.BaseResponseException;
 import com.group01.bits.repository.UserRepository;
 import com.group01.bits.service.AuthenticationService;
+import com.group01.bits.template.ResponseStatusCode;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -40,19 +43,19 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     @Transactional
-    public AuthenticationResponseDTO register(AuthenticationRequestDTO request) throws Exception {
+    public AuthenticationResponseDTO register(AuthenticationRequestDTO request)  {
         if(isExisted(request.getEmail())) {
             log.info("===== Email {} is existed =====", request.getEmail());
-            throw new Exception("Email is existed");
+            throw new BaseResponseException(ResponseStatusCode.builder().code("01").httpCode(HttpStatusCode.valueOf(200)).build());
         }
-        if (!checkEmail(request.getEmail())) {
-            log.info("====== Email {} is invalid =====", request.getEmail());
-            throw new Exception("Email is invalid");
-        }
-        if(!checkPassword(request.getPassword())) {
-            log.info("======= Password {} is invalid =====", request.getPassword());
-            throw new Exception("Password is invalid");
-        }
+//        if (!checkEmail(request.getEmail())) {
+//            log.info("====== Email {} is invalid =====", request.getEmail());
+//            throw new Exception("Email is invalid");
+//        }
+//        if(!checkPassword(request.getPassword())) {
+//            log.info("======= Password {} is invalid =====", request.getPassword());
+//            throw new Exception("Password is invalid");
+//        }
         User user = User.builder()
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))

@@ -19,12 +19,12 @@ public class ResponseStatus implements Serializable {
             shape = JsonFormat.Shape.STRING,
             pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
     )
-    private Date responseTime;
+    private Date responseTime = new Date();
     @JsonProperty("displayMessage")
     private String displayMessage;
 
-    public ResponseStatus(String code, boolean setMessageImplicitly) {
-
+    public ResponseStatus(String code) {
+        this.setCode(code);
     }
 
     public String getCode() {

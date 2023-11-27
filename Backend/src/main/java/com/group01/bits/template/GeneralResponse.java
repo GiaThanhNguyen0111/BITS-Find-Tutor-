@@ -19,6 +19,7 @@ public class GeneralResponse<T>{
         this.data = data;
     }
 
+
     @JsonProperty("status")
     public void setStatus(final ResponseStatus status) {
         this.status = status;
@@ -27,6 +28,20 @@ public class GeneralResponse<T>{
     @JsonProperty("data")
     public void setData(final T data) {
         this.data = data;
+    }
+
+    public GeneralResponse success(T data) {
+        GeneralResponse res = new GeneralResponse<>();
+        res.setStatus(new ResponseStatus("00"));
+        res.setData(data);
+        return res;
+    }
+
+    public GeneralResponse fail(String code) {
+        GeneralResponse res = new GeneralResponse<>();
+        res.setStatus(new ResponseStatus(code));
+        res.setData(null);
+        return res;
     }
 
     @Override

@@ -26,7 +26,6 @@ import java.util.*;
 @RequiredArgsConstructor
 public class ManageAccountServiceImpl implements ManageAccountService {
 
-    @Lazy
     private final UserRepository userRepository;
 
     private final SubjectRepository subjectRepository;
@@ -63,7 +62,7 @@ public class ManageAccountServiceImpl implements ManageAccountService {
 
 
     @Override
-    @Cacheable(value="TUTOR", key="#name", unless="#result == null")
+//    @Cacheable(value="TUTOR", key="#name", unless="#result == null")
     public List<UserDTO> getTutorByName(String name) {
         List<UserDTO> userDTOs = new ArrayList<>();
         List<User> users = userRepository.findTutorByName(name).orElseThrow(() -> new UsernameNotFoundException("User's name not found"));

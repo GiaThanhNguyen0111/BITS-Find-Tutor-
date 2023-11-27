@@ -7,15 +7,15 @@
     <list default="true" id="d250912b-8c25-437d-88a1-683e7cb6d7f8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/BitsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/BitsApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/config/ApplicationConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/AccountManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/AccountManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/BaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/BaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/impl/AuthenticationControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/controller/impl/AuthenticationControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/exception/BaseResponseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/exception/BaseResponseException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/exception/ResponseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/exception/ResponseStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/impl/AuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/impl/AuthenticationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/impl/BaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/impl/BaseServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/impl/ManageAccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/service/impl/ManageAccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/template/GeneralResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/template/GeneralResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/template/ResponseStatusCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/group01/bits/template/ResponseStatusCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +68,7 @@
       <workItem from="1700380974314" duration="3057000" />
       <workItem from="1700662809941" duration="548000" />
       <workItem from="1700759169005" duration="924000" />
-      <workItem from="1701008919440" duration="634000" />
+      <workItem from="1701008919440" duration="1827000" />
     </task>
     <servers />
   </component>

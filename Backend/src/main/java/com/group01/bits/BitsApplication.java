@@ -12,7 +12,7 @@ import org.springframework.cache.annotation.EnableCaching;
 @SpringBootApplication(scanBasePackages = "com.group01.bits")
 @EntityScan("com.group01.bits")
 @EnableConfigurationProperties
-@EnableCaching
+//@EnableCaching
 public class BitsApplication {
 
 	public static void main(String[] args) {

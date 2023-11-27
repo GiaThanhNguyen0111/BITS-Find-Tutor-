@@ -21,7 +21,7 @@ public class AuthenticationControllerImpl implements AuthenticationController {
     public GeneralResponse<AuthenticationResponseDTO> postRegister(AuthenticationRequestDTO request) throws Exception {
         log.info(request.toString());
         AuthenticationResponseDTO authenticationResponseDTO = authenticationService.register(request);
-        return GeneralResponse.<AuthenticationResponseDTO>builder().data(authenticationResponseDTO).build();
+        return new GeneralResponse<AuthenticationResponseDTO>().success(authenticationResponseDTO);
     }
 
     @Override
