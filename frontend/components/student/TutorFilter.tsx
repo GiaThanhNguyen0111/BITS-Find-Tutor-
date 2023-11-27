@@ -23,11 +23,13 @@ const TutorFilter = ({
   return (
     <>
       <div className="mb-3 py-1 max-w-full">
-        <h2 className="mb-3 font-semibold text-xl">Search by name</h2>
+        <h2 className="mb-3 sm:text-center md:text-start font-semibold text-xl">
+          Search by name
+        </h2>
         <div className="flex w-full max-w-sm items-center space-x-2">
-          <Input className="w-5/6" type="text" placeholder="Search by name" />
+          <Input className="block w-full " type="text" placeholder="Search by name" />
           <Button className="w-1/6">
-            <Search />
+            <Search className="w-full" />
           </Button>
         </div>
       </div>

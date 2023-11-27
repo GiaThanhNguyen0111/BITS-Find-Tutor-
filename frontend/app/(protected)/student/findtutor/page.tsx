@@ -33,7 +33,7 @@ const StudentMainPage = () => {
             setValidSubjects={setValidSubjects}
           />
         </div>
-        <div className="w-full md:w-4/5 ">
+        <div className="w-full md:w-4/5">
           <TutorDisplay validSubjects={validSubjects} />
         </div>
       </div>

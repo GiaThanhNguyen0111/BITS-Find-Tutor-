@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Subject } from "@/types";
-import { boolean } from "zod";
 import { originTeacherArray } from "@/dummyData";
 
 interface TutorDisplayProps {
@@ -43,13 +42,13 @@ const TutorDisplay = ({ validSubjects }: TutorDisplayProps) => {
 
   return (
     <>
-      <div className="min-h-screen">
+      <div className="min-h-[800px]">
         <h2 className="text-center text-3xl font-semibold">Available Tutors</h2>
-        <div className="grid grid-cols-3 gap-5 mt-5 ml-5 px-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 ml-5 px-16">
           {filteredArray.slice(startIndex, endIndex).map((teacher) => (
             <Card
               key={teacher.name}
-              className="h-56 w-full cursor-pointer hover:scale-105 transition"
+              className="h-80 md:h-72 lg:h-56 w-full cursor-pointer hover:scale-105 transition"
             >
               <CardContent className="flex flex-col gap-3 items-center justify-center h-full">
                 <Avatar className="w-24 h-24">
@@ -59,7 +58,7 @@ const TutorDisplay = ({ validSubjects }: TutorDisplayProps) => {
                 <CardTitle className="text-center text-xl">
                   {teacher.name}
                 </CardTitle>
-                <div className="flex flex-row gap-3 flex-wrap max-w-full">
+                <div className="flex flex-col md:flex-row gap-3 justify-center items-center flex-wrap max-w-full">
                   {teacher.subjects
                     .slice(0, itemsPerPage - 1)
                     .map((subject) => (

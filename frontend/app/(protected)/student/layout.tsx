@@ -5,10 +5,10 @@ import { useAuth } from "@/hooks/useAuth";
 import { redirect } from "next/navigation";
 const StudentLayout = ({ children }: { children: React.ReactNode }) => {
   const { role } = useAuth();
+
   if (role !== "student") {
     return redirect("/");
   }
-
   return (
     <div>
       <div className="h-full">
