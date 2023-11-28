@@ -28,12 +28,16 @@ public class SecurityConfiguration {
     @Value("${api.security.path}")
     private String SECURITY_PATH;
 
+    @Value("${api.general.path}")
+    private String PUBLIC_PATH;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(SECURITY_PATH).permitAll()
+                        .requestMatchers(SECURITY_PATH, PUBLIC_PATH)
+                        .permitAll()
                         .anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session
