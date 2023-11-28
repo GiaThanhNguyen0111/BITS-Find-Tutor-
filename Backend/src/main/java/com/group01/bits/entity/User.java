@@ -44,6 +44,9 @@ public class User implements UserDetails {
     @Column(name = "role")
     private String role;
 
+    @Column(name = "balance")
+    private String balance;
+
     @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Qualification> qualifications;

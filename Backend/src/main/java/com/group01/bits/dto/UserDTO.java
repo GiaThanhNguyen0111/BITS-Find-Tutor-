@@ -33,6 +33,8 @@ public class UserDTO {
     private String major;
     @JsonProperty("role")
     private String role;
+    @JsonProperty("balance")
+    private String balance;
     @JsonProperty("image")
     private String image;
     @JsonProperty("schedules")

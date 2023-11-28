@@ -1,5 +1,6 @@
 package com.group01.bits.service.impl;
 
+import com.group01.bits.constants.CacheConstant;
 import com.group01.bits.dto.QualificationDTO;
 import com.group01.bits.dto.SubjectDTO;
 import com.group01.bits.dto.UserDTO;
@@ -62,7 +63,7 @@ public class ManageAccountServiceImpl implements ManageAccountService {
 
 
     @Override
-//    @Cacheable(value="TUTOR", key="#name", unless="#result == null")
+    @Cacheable(value= CacheConstant.TUTOR_CACHE, key="#name", unless="#result == null")
     public List<UserDTO> getTutorByName(String name) {
         List<UserDTO> userDTOs = new ArrayList<>();
         List<User> users = userRepository.findTutorByName(name).orElseThrow(() -> new UsernameNotFoundException("User's name not found"));
@@ -81,6 +82,7 @@ public class ManageAccountServiceImpl implements ManageAccountService {
     }
 
     @Override
+    @Cacheable(value= CacheConstant.TUTOR_CACHE, key="#name", unless="#result == null")
     public List<UserDTO> getTutorBySubject(SubjectDTO subject) {
         List<UserDTO> userDTOs = new ArrayList<>();
         Subject selectedSubject = subjectRepository.findById(subject.getSubjectID()).orElseThrow();
