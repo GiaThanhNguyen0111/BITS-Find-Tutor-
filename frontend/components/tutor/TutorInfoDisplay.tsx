@@ -1,10 +1,12 @@
-"use client"
+"use client";
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { academicSubjects } from "@/dummyData";
 import { Plus } from "lucide-react";
 import { useModal } from "@/hooks/useModal";
+import { Star } from "lucide-react";
+import { Button } from "../ui/button";
 
 export const TutorInfoDisplay = () => {
   const { onOpen } = useModal();
@@ -18,17 +20,27 @@ export const TutorInfoDisplay = () => {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </div>
+
         <div className="">
           <h2 className="text-5xl mt-5 font-semibold text-center">Baroibeo</h2>
           <h3 className="text-lg mt-5 text-center">
             <span className="font-semibold">Email: </span> baroibeo@gmail.com
           </h3>
         </div>
+        <div className="flex justify-center mt-5 gap-1">
+          {[...Array(5)].map(() => {
+            return (
+              <Button className="bg-[#ffd900] hover:bg-[#ffd900] cursor-auto  ">
+                <Star />
+              </Button>
+            );
+          })}
+        </div>
         <div className="flex flex-col mt-12 border-t-2 border-black">
           <h2 className="text-3xl font-semibold text-center mt-10">Subject</h2>
           <div className="mt-5 ml-3 flex flex-wrap gap-3">
             {academicSubjects
-              .slice(0,3)
+              .slice(0, 3)
               .sort((a, b) => a.subject_name.length - b.subject_name.length) // Sort by subject_name length
               .map((subject) => (
                 <div key={subject.subject_id}>
@@ -38,13 +50,26 @@ export const TutorInfoDisplay = () => {
                 </div>
               ))}
             <div>
-              <Badge onClick={() => {
-                onOpen("addsubject")
-              }} className="cursor-pointer bg-gradient-to-r from-[#D0A2F7] to-[#BE9FE1] border-none  h-9 w-20 hover:scale-105 transition flex items-center justify-center">
+              <Badge
+                onClick={() => {
+                  onOpen("addsubject");
+                }}
+                className="cursor-pointer bg-gradient-to-r from-[#D0A2F7] to-[#BE9FE1] border-none  h-9 w-20 hover:scale-105 transition flex items-center justify-center"
+              >
                 <Plus className="w-3 h-3" />
               </Badge>
             </div>
-        </div>
+            
+          </div>
+          <div className="flex flex-col mt-12 border-t-2 border-black ">
+              <h2 className="text-3xl font-semibold text-center mt-10">
+                Reviews
+              </h2>
+              <div>
+                
+              </div>
+              
+            </div>
         </div>
       </div>
     </>
