@@ -52,7 +52,7 @@ export const AddSubjectModal = () => {
     <Dialog open={isModalOpen} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Add subject</DialogTitle>
+          <DialogTitle className="text-center uppercase pb-4 font-bold">Add subject</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form className="space-y-8">
@@ -62,9 +62,9 @@ export const AddSubjectModal = () => {
                 name="subject"
                 render={({ field }) => (
                   <FormItem>
-                    <FormControl>
+                    <FormControl className="w-full">
                       <Select>
-                        <SelectTrigger className="w-[180px]">
+                        <SelectTrigger className="">
                           <SelectValue placeholder="Select a subject" />
                         </SelectTrigger>
                         <SelectContent>

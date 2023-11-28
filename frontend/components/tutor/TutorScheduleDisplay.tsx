@@ -42,15 +42,15 @@ export const TutorScheduleDisplay = () => {
         <tbody className="">
           {Object.entries(schedule).map(([day, timeSlots]) => (
             <tr key={day} className="w-full">
-              <td className={`w-1/5 p-2 border-r border-black ${day === "Sunday" ? "" : "border-b "}`}>{day}</td>
+              <td className={`w-1/5 p-2 border-r border-black font-semibold text-center ${day === "Sunday" ? "" : "border-b "}`}>{day}</td>
               <td className={` w-full p-2 flex-wrap ${day === "Sunday" ? "" : "border-b border-black"}`}>
                 {timeSlots.map((timeSlot, index) => (
                   <Badge
                     key={`${day}-${index}`}
                     variant="default"
                     className={`m-1 cursor-pointer p-2 h-10 ${
-                      timeSlot === "+" ? "w-20" : "w-15"
-                    } bg-gradient-to-r from-[#D0A2F7] to-[#BE9FE1]  hover:scale-105 items-center justify-center`}
+                      timeSlot === "+" ? "w-20" : ""
+                    } bg-gradient-to-r from-[#D0A2F7] to-[#BE9FE1]  hover:scale-105 transition items-center justify-center`}
                   >
                     {timeSlot}
                   </Badge>

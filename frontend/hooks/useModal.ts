@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export type ModalType = "register" | "login" | "profile" | "addsubject";
+export type ModalType = "register" | "login" | "profile" | "addsubject" | "addqualifi";
 
 interface ModalStore {
   type: ModalType | null;

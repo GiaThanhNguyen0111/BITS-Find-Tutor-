@@ -11,14 +11,15 @@ export type Subject = {
 };
 
 export type Qualification = {
+  qualifi_id: string;
+  qualifi_name: string;
+  qualifi_description: string;
+  qualifi_image: string;
+};
 
-}
+export type AvailableTime = {};
 
-export type AvailableTime = {
-
-}
-
-export type Tutor =  {
+export type Tutor = {
   tutor_id: string;
   full_name: string;
   dob: Date;
@@ -29,4 +30,4 @@ export type Tutor =  {
   role: string;
   qualification: Qualification[];
   availableTime: AvailableTime[];
-}
+};
