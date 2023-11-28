@@ -35,8 +35,8 @@ export const TutorInfoDisplay = () => {
           })}
         </div>
         <div className="flex flex-col mt-12 border-t-2 border-black">
-          <h2 className="text-3xl font-semibold text-center mt-10">Subject</h2>
-          <div className="mt-5 ml-3 flex flex-wrap gap-2">
+          <h2 className="text-3xl font-semibold text-center mt-10">Subjects</h2>
+          <div className="mt-5 ml-3 flex flex-wrap gap-[.6rem]">
             {academicSubjects
               .slice(0, 4)
               .sort((a, b) => a.subject_name.length - b.subject_name.length) // Sort by subject_name length
@@ -52,7 +52,7 @@ export const TutorInfoDisplay = () => {
                 onClick={() => {
                   onOpen("addsubject");
                 }}
-                className="cursor-pointer bg-gradient-to-r from-[#D0A2F7] to-[#BE9FE1] border-none  h-9 w-20 hover:scale-105 transition flex items-center justify-center"
+                className="cursor-pointer bg-gradient-to-r from-[#D0A2F7] to-[#BE9FE1] border-none  h-9 w-[4.2rem] hover:scale-105 transition flex items-center justify-center"
               >
                 <Plus className="w-3 h-3" />
               </Badge>
