@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { academicSubjects } from "@/dummyData";
 import { Plus } from "lucide-react";
 import { useModal } from "@/hooks/useModal";
+import Image from "next/image";
 import { Star } from "lucide-react";
 import { Button } from "../ui/button";
 
@@ -30,9 +31,9 @@ export const TutorInfoDisplay = () => {
         <div className="flex justify-center mt-5 gap-1">
           {[...Array(5)].map(() => {
             return (
-              <Button className="bg-[#ffd900] hover:bg-[#ffd900] cursor-auto  ">
-                <Star />
-              </Button>
+              
+              <Image src="/star.svg" alt="My Icon" width={24} height={24} />
+              
             );
           })}
         </div>
@@ -66,7 +67,7 @@ export const TutorInfoDisplay = () => {
                 Reviews
               </h2>
               <div>
-                
+
               </div>
               
             </div>
