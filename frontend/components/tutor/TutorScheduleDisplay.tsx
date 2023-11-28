@@ -1,42 +1,89 @@
-import React from 'react'
-import { Badge, badgeVariants } from '@/components/ui/badge';
-
+import React from "react";
+import { Badge, badgeVariants } from "@/components/ui/badge";
 
 export const TutorScheduleDisplay = () => {
-    const schedule = {
-      Monday: ['7:00 PM - 8:30 PM','9:00 AM - 10:00 AM', '1:00 PM - 3:00 PM', '4:00 PM - 6:00 PM','6:30 PM - 8:00 PM','8:30 PM - 9:30 PM','10:00 PM - 11:30 PM'],
-      Tuesday: ['9:00 AM - 10:00 AM', '1:00 PM - 3:00 PM', '4:00 PM - 6:00 PM','6:30 PM - 8:00 PM','8:30 PM - 9:30 PM','10:00 PM - 11:30 PM'],
-      Wednesday: ['7:00 PM - 8:30 PM','9:00 AM - 10:00 AM', '1:00 PM - 3:00 PM', '4:00 PM - 6:00 PM','8:30 PM - 9:30 PM','10:00 PM - 11:30 PM'],
-      Thursday: ['7:00 PM - 8:30 PM','9:00 AM - 10:00 AM', '1:00 PM - 3:00 PM', '4:00 PM - 6:00 PM','6:30 PM - 8:00 PM','8:30 PM - 9:30 PM','10:00 PM - 11:30 PM'],
-      Friday: ['7:00 PM - 8:30 PM','9:00 AM - 10:00 AM', '1:00 PM - 3:00 PM','6:30 PM - 8:00 PM','8:30 PM - 9:30 PM','10:00 PM - 11:30 PM'],
-      Saturday: ['7:00 PM - 8:30 PM','9:00 AM - 10:00 AM', '1:00 PM - 3:00 PM', '4:00 PM - 6:00 PM','6:30 PM - 8:00 PM','10:00 PM - 11:30 PM'],
-      Sunday: ['7:00 PM - 8:30 PM','9:00 AM - 10:00 AM', '1:00 PM - 3:00 PM', '4:00 PM - 6:00 PM','6:30 PM - 8:00 PM','8:30 PM - 9:30 PM'],
-    };
-  
-    return (
-      <table className="table-fixed">
-        <thead>
-          <tr>
-            <th className="text-5xl mt-5 font-semibold text-left">Schedule</th>
-          </tr>
-        </thead>
-        <tbody>
+  const schedule = {
+    Monday: [
+      "7:00 PM - 8:30 PM",
+      "9:00 AM - 10:00 AM",
+      "1:00 PM - 3:00 PM",
+      "4:00 PM - 6:00 PM",
+      "6:30 PM - 8:00 PM",
+      "8:30 PM - 9:30 PM",
+      "10:00 PM - 11:30 PM",
+    ],
+    Tuesday: [
+      "9:00 AM - 10:00 AM",
+      "1:00 PM - 3:00 PM",
+      "4:00 PM - 6:00 PM",
+      "6:30 PM - 8:00 PM",
+      "8:30 PM - 9:30 PM",
+      "10:00 PM - 11:30 PM",
+    ],
+    Wednesday: [
+      "7:00 PM - 8:30 PM",
+      "9:00 AM - 10:00 AM",
+      "1:00 PM - 3:00 PM",
+      "4:00 PM - 6:00 PM",
+      "8:30 PM - 9:30 PM",
+      "10:00 PM - 11:30 PM",
+    ],
+    Thursday: [
+      "7:00 PM - 8:30 PM",
+      "9:00 AM - 10:00 AM",
+      "1:00 PM - 3:00 PM",
+      "4:00 PM - 6:00 PM",
+      "6:30 PM - 8:00 PM",
+      "8:30 PM - 9:30 PM",
+      "10:00 PM - 11:30 PM",
+    ],
+    Friday: [
+      "7:00 PM - 8:30 PM",
+      "9:00 AM - 10:00 AM",
+      "1:00 PM - 3:00 PM",
+      "6:30 PM - 8:00 PM",
+      "8:30 PM - 9:30 PM",
+      "10:00 PM - 11:30 PM",
+    ],
+    Saturday: [
+      "7:00 PM - 8:30 PM",
+      "9:00 AM - 10:00 AM",
+      "1:00 PM - 3:00 PM",
+      "4:00 PM - 6:00 PM",
+      "6:30 PM - 8:00 PM",
+      "10:00 PM - 11:30 PM",
+    ],
+    Sunday: [
+      "7:00 PM - 8:30 PM",
+      "9:00 AM - 10:00 AM",
+      "1:00 PM - 3:00 PM",
+      "4:00 PM - 6:00 PM",
+      "6:30 PM - 8:00 PM",
+      "8:30 PM - 9:30 PM",
+    ],
+  };
+
+  return (
+    <div className="min-w-full">
+      <table className="table-fixed my-5 min-w-full">
+        <tbody className="">
           {Object.entries(schedule).map(([day, timeSlots]) => (
-            <tr key={day}>
-              <td className="w-1/5 border border-black p-2">{day}</td>
-              <td className="w-4/5 border border-black p-2 flex flex-wrap">
+            <tr key={day} className="w-full">
+              <td className={`w-1/5 p-2 border-r border-black ${day === "Sunday" ? "" : "border-b "}`}>{day}</td>
+              <td className={` w-full p-2 flex flex-wrap ${day === "Sunday" ? "" : "border-b border-black"}`}>
                 {timeSlots.map((timeSlot, index) => (
                   <Badge
                     key={`${day}-${index}`}
                     variant="default"
-                    className={`m-1 cursor-pointer p-2 h-10 ${timeSlot === '+' ? 'w-20' : 'w-15'} hover:scale-105 items-center justify-center`}
+                    className={`m-1 cursor-pointer p-2 h-10 ${
+                      timeSlot === "+" ? "w-20" : "w-15"
+                    } bg-gradient-to-r from-[#D0A2F7] to-[#BE9FE1]  hover:scale-105 items-center justify-center`}
                   >
                     {timeSlot}
                   </Badge>
                 ))}
                 <Badge
-                  variant="default"
-                  className="m-1 cursor-pointer p-2 h-10 w-15 hover:scale-105 items-center justify-center"
+                  className="m-1 bg-gradient-to-r from-[#D0A2F7] to-[#BE9FE1]  cursor-pointer p-2 h-10 w-16 hover:scale-105 items-center justify-center"
                 >
                   +
                 </Badge>
@@ -45,5 +92,6 @@ export const TutorScheduleDisplay = () => {
           ))}
         </tbody>
       </table>
-    );
-  };
+    </div>
+  );
+};

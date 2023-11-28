@@ -6,7 +6,6 @@ import { academicSubjects } from "@/dummyData";
 import { Plus } from "lucide-react";
 import { useModal } from "@/hooks/useModal";
 import Image from "next/image";
-import { Star } from "lucide-react";
 import { Button } from "../ui/button";
 
 export const TutorInfoDisplay = () => {
