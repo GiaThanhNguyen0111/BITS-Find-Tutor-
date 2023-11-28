@@ -7,7 +7,6 @@ import com.group01.bits.service.AuthenticationService;
 import com.group01.bits.template.GeneralResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -25,8 +24,8 @@ public class AuthenticationControllerImpl implements AuthenticationController {
     }
 
     @Override
-    public ResponseEntity<AuthenticationResponseDTO> postAuthenticate(AuthenticationRequestDTO request) {
+    public GeneralResponse<AuthenticationResponseDTO> postAuthenticate(AuthenticationRequestDTO request) {
         AuthenticationResponseDTO authenticationResponseDTO = authenticationService.authenticate(request);
-        return ResponseEntity.ok(authenticationResponseDTO);
+        return new GeneralResponse<AuthenticationResponseDTO>().success(authenticationResponseDTO);
     }
 }

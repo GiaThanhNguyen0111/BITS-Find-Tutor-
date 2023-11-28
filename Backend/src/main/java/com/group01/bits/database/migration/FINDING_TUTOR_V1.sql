@@ -70,6 +70,7 @@ create table user
     major     VARCHAR(250),
     password  VARCHAR(250),
     role      VARCHAR(250),
+    balance   DOUBLE,
     PRIMARY KEY (user_id)
 );
 

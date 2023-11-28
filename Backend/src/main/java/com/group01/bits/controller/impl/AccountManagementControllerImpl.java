@@ -10,9 +10,9 @@ import com.group01.bits.dto.UserDTO;
 import com.group01.bits.entity.AvailableTime;
 import com.group01.bits.service.BaseService;
 import com.group01.bits.service.ManageAccountService;
+import com.group01.bits.template.GeneralResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -32,25 +32,25 @@ public class AccountManagementControllerImpl implements AccountManagementControl
 
 
     @Override
-    public ResponseEntity<List<UserDTO>> getTutorByName(UserDTO request) {
-        return ResponseEntity.ok(manageAccountService.getTutorByName(request.getFullName()));
+    public GeneralResponse<List<UserDTO>> getTutorByName(UserDTO request) {
+        return new GeneralResponse<>().success(manageAccountService.getTutorByName(request.getFullName()));
     }
 
     @Override
-    public ResponseEntity<List<UserDTO>> getTutorBySubject(SubjectDTO request) {
+    public GeneralResponse<List<UserDTO>> getTutorBySubject(SubjectDTO request) {
         List<UserDTO> userDTOs= manageAccountService.getTutorBySubject(request);
-        return ResponseEntity.ok(userDTOs);
+        return new GeneralResponse<>().success(userDTOs);
     }
 
     @Override
-    public ResponseEntity<List<QualificationDTO>> getQualifications(UserDTO request, String authorizationString) {
+    public GeneralResponse<List<QualificationDTO>> getQualifications(UserDTO request, String authorizationString) {
         String jwtToken = baseService.extractToken(authorizationString);
         String email = jwtAdapter.extractUsername(jwtToken);
-        return ResponseEntity.ok(manageAccountService.getQualifications(email));
+        return new GeneralResponse<>().success(manageAccountService.getQualifications(email));
     }
 
     @Override
-    public ResponseEntity<UserDTO> postAddSubjects(List<SubjectDTO> request, String authorizationString) {
+    public GeneralResponse<UserDTO> postAddSubjects(List<SubjectDTO> request, String authorizationString) {
         String jwtToken = baseService.extractToken(authorizationString);
         String role = jwtAdapter.extractRole(jwtToken);
         UserDTO user = new UserDTO();
@@ -59,27 +59,27 @@ public class AccountManagementControllerImpl implements AccountManagementControl
         } else {
             throw new RuntimeException();
         }
-        return ResponseEntity.ok(user);
+        return new GeneralResponse<>().success(user);
     }
 
     @Override
-    public ResponseEntity<UserDTO> postAddSchedule(UserDTO request, String authorizationString) {
+    public GeneralResponse<UserDTO> postAddSchedule(UserDTO request, String authorizationString) {
         return null;
     }
 
     @Override
-    public ResponseEntity<UserDTO> postAddQualification(UserDTO request, String authorizationString) {
+    public GeneralResponse<UserDTO> postAddQualification(UserDTO request, String authorizationString) {
         return null;
     }
 
     @Override
-    public ResponseEntity<List<AvailableTime>> postAddAvailableTime(AvailableTimeDTO request, String authorizationString) {
+    public GeneralResponse<List<AvailableTime>> postAddAvailableTime(AvailableTimeDTO request, String authorizationString) {
         return null;
     }
 
     @Override
-    public ResponseEntity<List<UserDTO>> getAllTutor() {
-        return ResponseEntity.ok(manageAccountService.getAllTutor());
+    public GeneralResponse<List<UserDTO>> getAllTutor() {
+        return new GeneralResponse<>().success(manageAccountService.getAllTutor());
     }
 
 }
