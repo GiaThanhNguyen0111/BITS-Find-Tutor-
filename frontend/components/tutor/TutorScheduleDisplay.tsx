@@ -5,61 +5,34 @@ export const TutorScheduleDisplay = () => {
   const schedule = {
     Monday: [
       "7:00 PM - 8:30 PM",
-      "9:00 AM - 10:00 AM",
-      "1:00 PM - 3:00 PM",
-      "4:00 PM - 6:00 PM",
-      "6:30 PM - 8:00 PM",
-      "8:30 PM - 9:30 PM",
-      "10:00 PM - 11:30 PM",
     ],
     Tuesday: [
       "9:00 AM - 10:00 AM",
-      "1:00 PM - 3:00 PM",
-      "4:00 PM - 6:00 PM",
-      "6:30 PM - 8:00 PM",
       "8:30 PM - 9:30 PM",
       "10:00 PM - 11:30 PM",
     ],
     Wednesday: [
       "7:00 PM - 8:30 PM",
       "9:00 AM - 10:00 AM",
-      "1:00 PM - 3:00 PM",
-      "4:00 PM - 6:00 PM",
-      "8:30 PM - 9:30 PM",
-      "10:00 PM - 11:30 PM",
     ],
     Thursday: [
-      "7:00 PM - 8:30 PM",
-      "9:00 AM - 10:00 AM",
       "1:00 PM - 3:00 PM",
-      "4:00 PM - 6:00 PM",
       "6:30 PM - 8:00 PM",
-      "8:30 PM - 9:30 PM",
       "10:00 PM - 11:30 PM",
     ],
     Friday: [
-      "7:00 PM - 8:30 PM",
-      "9:00 AM - 10:00 AM",
-      "1:00 PM - 3:00 PM",
       "6:30 PM - 8:00 PM",
       "8:30 PM - 9:30 PM",
       "10:00 PM - 11:30 PM",
     ],
     Saturday: [
-      "7:00 PM - 8:30 PM",
       "9:00 AM - 10:00 AM",
       "1:00 PM - 3:00 PM",
       "4:00 PM - 6:00 PM",
-      "6:30 PM - 8:00 PM",
-      "10:00 PM - 11:30 PM",
     ],
     Sunday: [
       "7:00 PM - 8:30 PM",
-      "9:00 AM - 10:00 AM",
       "1:00 PM - 3:00 PM",
-      "4:00 PM - 6:00 PM",
-      "6:30 PM - 8:00 PM",
-      "8:30 PM - 9:30 PM",
     ],
   };
 
@@ -70,7 +43,7 @@ export const TutorScheduleDisplay = () => {
           {Object.entries(schedule).map(([day, timeSlots]) => (
             <tr key={day} className="w-full">
               <td className={`w-1/5 p-2 border-r border-black ${day === "Sunday" ? "" : "border-b "}`}>{day}</td>
-              <td className={` w-full p-2 flex flex-wrap ${day === "Sunday" ? "" : "border-b border-black"}`}>
+              <td className={` w-full p-2 flex-wrap ${day === "Sunday" ? "" : "border-b border-black"}`}>
                 {timeSlots.map((timeSlot, index) => (
                   <Badge
                     key={`${day}-${index}`}
