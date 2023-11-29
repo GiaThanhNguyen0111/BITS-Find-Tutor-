@@ -5,6 +5,7 @@ import { TutorQualifiDisplay } from "@/components/tutor/TutorQualifiDisplay";
 import { TutorScheduleDisplay } from "@/components/tutor/TutorScheduleDisplay";
 import { Button } from "@/components/ui/button";
 import { useModal } from "@/hooks/useModal";
+import { Plus } from "lucide-react";
 
 const TutorMainPage = () => {
   const { onOpen } = useModal();
@@ -22,12 +23,19 @@ const TutorMainPage = () => {
               onOpen("addqualifi");
             }}
           >
-            Add new qualification
+            <Plus />
           </Button>
         </div>
         <TutorQualifiDisplay />
-        <div className="flex mt-10">
+        <div className="flex mt-10 flex-row justify-between">
           <h2 className="text-4xl font-semibold">Available Time</h2>
+          <Button
+            onClick={() => {
+              onOpen("addschedule");
+            }}
+          >
+            <Plus />
+          </Button>
         </div>
         <TutorScheduleDisplay />
       </div>

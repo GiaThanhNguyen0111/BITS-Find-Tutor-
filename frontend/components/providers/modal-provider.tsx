@@ -5,6 +5,7 @@ import { LoginModal } from "../modals/login-modal";
 import ProfileModal from "../modals/profile-modal";
 import { AddSubjectModal } from "../modals/addsubject-modal";
 import { AddQualificationModal } from "../modals/addqualifi-modal";
+import { AddScheduleModal } from "../modals/addschedule-model";
 
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -23,6 +24,7 @@ export const ModalProvider = () => {
       <LoginModal />
       <AddSubjectModal />
       <AddQualificationModal/>
+      <AddScheduleModal/>
     </>
   );
 };
