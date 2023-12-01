@@ -88,3 +88,12 @@ create table user_schedule
     PRIMARY KEY (user_id, schedule_id)
 );
 
+create table available_time
+(
+    id    BIGINT NOT NULL,
+    day_abbreviation VARCHAR(3),
+    start_time TIME NOT NULL,
+    end_time TIME NOT NULL,
+    PRIMARY KEY (id)
+);
+

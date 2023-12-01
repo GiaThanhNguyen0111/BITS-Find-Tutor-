@@ -45,7 +45,7 @@ public class User implements UserDetails {
     private String role;
 
     @Column(name = "balance")
-    private String balance;
+    private Double balance;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
@@ -149,5 +149,9 @@ public class User implements UserDetails {
 
     public List<AvailableTime> getAvailableTimes() {
         return availableTimes;
+    }
+
+    public Double getBalance() {
+        return balance;
     }
 }

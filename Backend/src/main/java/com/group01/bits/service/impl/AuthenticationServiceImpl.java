@@ -83,6 +83,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             );
         } catch (Exception e) {
             log.info("===Exception=== {}", e.getMessage());
+            throw new BaseResponseException(ResponseStatusCode.builder().code("07").httpCode(HttpStatusCode.valueOf(200)).build());
         }
         User user = userRepository.findByEmail(request.getEmail()).orElseThrow();
         Map<String, String> claims = new HashMap<>();

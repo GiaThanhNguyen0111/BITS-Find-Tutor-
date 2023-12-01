@@ -30,4 +30,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "SELECT u.* FROM user AS u WHERE u.role = \"TUTOR\"", nativeQuery = true)
     Optional<List<User>> findAllTutor();
 
+    @Modifying
+    @Query(value = "UPDATE user SET balance=?1 WHERE user_id = ?2", nativeQuery = true)
+    Optional<User> updateBalance(Double balance, Long userId);
 }

@@ -18,9 +18,12 @@ import java.util.Date;
 public class AvailableTimeDTO {
     @JsonProperty("id")
     private Long id;
-    @JsonFormat(pattern = "EEE, HH:mm:ss")
+    @JsonProperty("abbreviationDay")
+    private String abbreviationDay;
+    @JsonFormat(pattern = "HH:mm:ss")
     @JsonProperty("startTime")
     private Date startTime;
+    @JsonFormat(pattern = "HH:mm:ss")
     @JsonProperty("endTime")
     private Date endTime;
 }

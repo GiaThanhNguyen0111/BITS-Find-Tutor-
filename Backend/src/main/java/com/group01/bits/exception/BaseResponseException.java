@@ -34,6 +34,10 @@ public class BaseResponseException extends RuntimeException{
         this.responseStatusCode = responseStatus;
     }
 
+    public BaseResponseException() {
+
+    }
+
 
     @Override
     public boolean equals(Object o) {

@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 // TODO
-@RequestMapping("${api.general.path}")
+@RequestMapping("${api.private.path}")
 public interface TransactionController {
     @GetMapping("checkEarning")
-    GeneralResponse<TransactionHistoryDTO> checkEarning(@RequestBody UserDTO request);
+    GeneralResponse<List<TransactionHistoryDTO>> checkEarning(@RequestBody UserDTO request);
 
     @PostMapping("pay")
     GeneralResponse<TransactionHistoryDTO> pay(@RequestBody TransactionHistoryDTO request);

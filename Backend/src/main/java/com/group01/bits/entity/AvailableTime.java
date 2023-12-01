@@ -21,11 +21,14 @@ public class AvailableTime {
     @Column(name = "available_time_id")
     private Long id;
 
-    @JsonFormat(pattern = "EEE, HH:mm:ss")
+    @Column(name = "day_abbreviation")
+    private String dayAbbreviation;
+
+    @JsonFormat(pattern = "HH:mm:ss")
     @Column(name = "start_time")
     private Date startTime;
 
-    @JsonFormat(pattern = "EEE, HH:mm:ss")
+    @JsonFormat(pattern = "HH:mm:ss")
     @Column(name = "end_time")
     private Date endTime;
 
