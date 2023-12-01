@@ -1,29 +1,37 @@
 version: "1.0"
 
 services:
-  elastic-search:
-    image: docker.elastic.co/elasticsearch/elasticsearch:5.5.3
-    restart: always
-    network_mode: host
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.3
+    container_name: sem_elasticsearch
     ports:
       - "9200:9200"
-      - "9300:9300"
-    volumes:
-      - esdata:/usr/share/elasticsearch/data
+      # restart: on-failure
     environment:
       - discovery.type=single-node
-      - cluster.name=bits-cluster
       - bootstrap.memory_lock=true
-      - xpack.security.enabled=false
-      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./volumes/elasticsearch:/usr/share/elasticsearch/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10k"
+        max-file: "10"
   kibana:
-    image: docker.elastic.co/kibana/kibana:5.5.3
+    image: docker.elastic.co/kibana/kibana:7.9.3
     restart: always
-    network_mode: host
+    depends_on:
+      - elasticsearch
     ports:
       - "5601:5601"
     environment:
-      ELASTICSEARCH_URL: http://localhost:9200
+      ELASTICSEARCH_URL: http://${HOST}:9200
+      SERVER_NAME: "127.0.0.1"
   redis-server:
     container_name: redis
     image: redis:6.2-alpine
@@ -32,10 +40,29 @@ services:
     command: redis-server --save 20 1 --loglevel warning --requirepass "123456a@"
     volumes:
       - cache:/data
-  mysqldb:
-    image: mysql:8.0.4
+  logstash:
+    build:
+      context: .
+      dockerfile: Dockerfile-logstash
+    container_name: logstash
+    links:
+      - elasticsearch
+      - mariadb
+    depends_on:
+      - mariadb
+      - elasticsearch
+    volumes:
+      - ./volumes/logstash/pipeline/:/usr/share/logstash/pipeline/
+      - ./volumes/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./volumes/logstash/config/pipelines.yml:/usr/share/logstash/config/pipelines.yml
+      - ./volumes/logstash/config/queries/:/usr/share/logstash/config/queries/
+      - ./volumes/logstash/mariadb-java-client-2.4.3.jar:/usr/share/logstash/logstash-core/lib/jars/mariadb-java-client-2.4.3.jar
+  mariadb:
+    image: mariadb
     platform: linux/x86_64
     restart: unless-stopped
+    networks:
+      - spring-boot-mysql-network
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=finding_tutor
@@ -45,7 +72,7 @@ services:
       - ./database_storage/FINDING_TUTOR_V1.sql:/docker-entrypoint-initdb.d/FINDING_TUTOR_V1.sql
   app:
     depends_on:
-      - mysqldb
+      - mariadb
     build:
       context: .
       dockerfile: Dockerfile
@@ -56,10 +83,10 @@ services:
       - "8081:8082"
     environment:
       server.port: 8082
-      spring.datasource.url: jdbc:mysql://192.168.1.11:3307/finding_tutor
+      spring.datasource.url: jdbc:mariadb://${HOST}:3307/finding_tutor
       spring.datasource.username: group01
       spring.datasource.password: 123456a@
-      spring.datasource.driver-class-name: com.mysql.cj.jdbc.Driver
+      spring.datasource.driver-class-name: org.mariadb.jdbc.Driver
       spring.jpa.generate-ddl: false
       spring.jpa.hibernate.ddl-auto: update
       spring.flyway.baseline-on-migrate: true

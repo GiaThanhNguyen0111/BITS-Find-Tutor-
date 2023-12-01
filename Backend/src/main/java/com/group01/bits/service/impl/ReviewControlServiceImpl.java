@@ -30,7 +30,7 @@ public class ReviewControlServiceImpl implements ReviewControlService {
 
     @Override
     public List<ReviewDTO> getReviewByTutorId(Long id) {
-        List<Review> reviews = reviewRepository.findAllByReceiverId(id).orElseThrow(BaseResponseException::new);
+        List<Review> reviews = reviewRepository.findAllByReceiverId(id).orElseThrow();
         List<ReviewDTO> dtos = new ArrayList<>();
 
         for (Review review: reviews) {
@@ -60,7 +60,7 @@ public class ReviewControlServiceImpl implements ReviewControlService {
     @Override
     @Transactional
     public DeleteTemplateDTO deleteReviewById(Long id, String email) {
-        User user = userRepository.findByEmail(email).orElseThrow(BaseResponseException::new);
+        User user = userRepository.findByEmail(email).orElseThrow();
         Long userId = user.getUserID();
         Optional<Review> optReview = reviewRepository.findById(id);
         Review review = optReview.get();

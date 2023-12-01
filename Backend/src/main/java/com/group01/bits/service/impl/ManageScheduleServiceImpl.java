@@ -34,7 +34,7 @@ public class ManageScheduleServiceImpl implements ManageScheduleService {
     private final AvailableTimeRepository availableTimeRepository;
     @Override
     public AvailableTimeDTO addAvailableTime(Long id, Date startTime, Date endTime, String day) {
-        User user = userRepository.findById(id).orElseThrow(BaseResponseException::new);
+        User user = userRepository.findById(id).orElseThrow();
         AvailableTime availableTime = AvailableTime.builder()
                 .startTime(startTime)
                 .endTime(endTime)
@@ -53,7 +53,7 @@ public class ManageScheduleServiceImpl implements ManageScheduleService {
 
     @Override
     public List<AvailableTimeDTO> getListOfAvailableTimeByTutorId(Long id) {
-        List<AvailableTime> availableTimes = availableTimeRepository.findByUsedIds(id).orElseThrow(BaseResponseException::new);
+        List<AvailableTime> availableTimes = availableTimeRepository.findByUsedIds(id).orElseThrow();
         List<AvailableTimeDTO> dtos = new ArrayList<>();
 
         for(AvailableTime availableTime: availableTimes) {
